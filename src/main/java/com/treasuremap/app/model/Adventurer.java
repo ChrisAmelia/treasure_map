@@ -24,4 +24,13 @@ public class Adventurer {
 			this.treasures = treasures;
 		}
 	}
+
+	/**
+	 * Adds the given treasures to the current ones.
+	 *
+	 * @parma treasures the number of gained treasures.
+	 */
+	public void gainTreasures(int treasures) {
+		setTreasures(getTreasures() + treasures);
+	}
 }
