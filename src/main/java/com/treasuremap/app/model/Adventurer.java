@@ -13,7 +13,7 @@ public class Adventurer {
 	 * @param name The name to set.
 	 * @return the adventurer's name.
 	 */
-	private String name;
+	private String name = "A";
 
 	/**
 	 * The number of treasures the adventurer has.
@@ -40,5 +40,10 @@ public class Adventurer {
 	 */
 	public void gainTreasures(int treasures) {
 		setTreasures(getTreasures() + treasures);
+	}
+
+	@Override
+	public String toString() {
+		return name.substring(0, 1);
 	}
 }

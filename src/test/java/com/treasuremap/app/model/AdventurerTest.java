@@ -27,6 +27,25 @@ public class AdventurerTest {
 	}
 
 	/**
+	 * The method {@link Adventurer#toString()} should return the first letter of the adventurer's name.
+	 * If no name is initialized or if it's empty, then returns by default the string "A".
+	 *
+	 * - Testing method {@link Adventurer#toString()}
+	 */
+	@Test
+	public void to_string_should_return_the_first_letter_of_the_name() {
+		Adventurer adventurer = new Adventurer();
+
+		// No name is initialized, expecting default name "A"
+		assertEquals("A", adventurer.toString());
+
+		adventurer.setName("John");
+
+		// Name is now John, the first letter is 'J'
+		assertEquals("J", adventurer.toString());
+	}
+
+	/**
 	 * The number of treasures must be a positive number.
 	 * If a negative number is provided then nothing happens.
 	 */
