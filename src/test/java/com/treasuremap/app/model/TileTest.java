@@ -34,10 +34,12 @@ public class TileTest {
 	 * - {@link Adventurer#getY()}
 	 * - {@link Adventurer#getType()}
 	 * - {@link Adventurer#getTreasures()}
+	 * - {@link Adventurer#isPlayerPresent()}
 	 * - {@link Adventurer#setX(int)}
 	 * - {@link Adventurer#setY(int)}
 	 * - {@link Adventurer#setType(TileType)}
-	 * - {@link Adventurer#setTreasures(int)()}
+	 * - {@link Adventurer#setTreasures(int)}
+	 * - {@link Adventurer#setPlayerPresent(boolean)}
 	 */
 	@Test
 	public void modified_tile_should_return_modified_values() {
