@@ -42,11 +42,12 @@ public class Tile {
 	private int treasures;
 
 	/**
-	 * True if a present player is on this tile, else false.
+	 * Adventurer on this tile, is null if there is no adventurer.
 	 *
-	 * @param playerPresent true if player present, else false.
+	 * @param adventurer the adventurer to set on this tile.
+	 * @return the adventurer on this tile.
 	 */
-	private boolean playerPresent = false;
+	private Adventurer adventurer;
 
 	/**
 	 * Constructs a new object Tile.
@@ -65,5 +66,15 @@ public class Tile {
 	public Tile(int x, int y) {
 		this.x = x;
 		this.y = y;
+	}
+
+	/**
+	 * Returns true if an adventurer is present on this tile,
+	 * else false.
+	 *
+	 * @return true if adventurer is present, else false.
+	 */
+	public boolean isAdventurerPresent() {
+		return adventurer != null;
 	}
 }

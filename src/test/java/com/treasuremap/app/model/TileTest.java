@@ -1,6 +1,8 @@
 package com.treasuremap.app.model;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 /**
@@ -44,12 +46,10 @@ public class TileTest {
 	 * - {@link Adventurer#getY()}
 	 * - {@link Adventurer#getType()}
 	 * - {@link Adventurer#getTreasures()}
-	 * - {@link Adventurer#isPlayerPresent()}
 	 * - {@link Adventurer#setX(int)}
 	 * - {@link Adventurer#setY(int)}
 	 * - {@link Adventurer#setType(TileType)}
 	 * - {@link Adventurer#setTreasures(int)}
-	 * - {@link Adventurer#setPlayerPresent(boolean)}
 	 */
 	@Test
 	public void modified_tile_should_return_modified_values() {
@@ -58,13 +58,28 @@ public class TileTest {
 		tile.setY(20);
 		tile.setType(TileType.MOUNTAIN);
 		tile.setTreasures(32767);
-		tile.setPlayerPresent(true);
 
 		assertEquals(10, tile.getX());
 		assertEquals(20, tile.getY());
 		assertEquals(TileType.MOUNTAIN, tile.getType());
 		assertEquals(32767, tile.getTreasures());
-		assertEquals(true, tile.isPlayerPresent());
 	}
 	
+	/**
+	 * Testing methods:
+	 * - {@link Tile#setAdventurer(Adventurer)}
+	 * - {@link Tile#isAdventurerPresent()}
+	 */
+	@Test
+	public void a_tile_with_an_adventurer_should_return_their_presence() {
+		Adventurer adventurer = new Adventurer();
+		Tile tile = new Tile();
+
+		// By default, a tile has no adventurer on it
+		assertFalse(tile.isAdventurerPresent());
+
+		tile.setAdventurer(adventurer);
+
+		assertTrue(tile.isAdventurerPresent());
+	}
 }
