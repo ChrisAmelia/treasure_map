@@ -44,4 +44,30 @@ public class TreasureMap {
 	public int getHeight() {
 		return tiles[0].length;
 	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+
+		builder.append("   ");
+
+		for (int j = 0 ; j < tiles[0].length ; j++) {
+			builder.append((j + 1) + " ");
+		}
+
+		builder.append("\n");
+
+		for (int i = 0 ; i < tiles.length ; i++) {
+			builder.append((i + 1) + " ");
+			for (int j = 0 ; j < tiles[i].length ; j++) {
+				builder.append("|" + tiles[i][j].toString());
+			}
+
+			builder.append("|");
+			builder.append("\n");
+		}
+
+
+		return builder.toString();
+	}
 }
