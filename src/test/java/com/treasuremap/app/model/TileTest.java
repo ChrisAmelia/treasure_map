@@ -46,11 +46,13 @@ public class TileTest {
 		tile.setY(20);
 		tile.setType(TileType.MOUNTAIN);
 		tile.setTreasures(32767);
+		tile.setPlayerPresent(true);
 
 		assertEquals(10, tile.getX());
 		assertEquals(20, tile.getY());
 		assertEquals(TileType.MOUNTAIN, tile.getType());
 		assertEquals(32767, tile.getTreasures());
+		assertEquals(true, tile.isPlayerPresent());
 	}
 	
 }

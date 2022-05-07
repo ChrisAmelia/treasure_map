@@ -40,4 +40,11 @@ public class Tile {
 	 * @return the number of treasures.
 	 */
 	private int treasures;
+
+	/**
+	 * True if a present player is on this tile, else false.
+	 *
+	 * @param playerPresent true if player present, else false.
+	 */
+	private boolean playerPresent = false;
 }
