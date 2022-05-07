@@ -44,7 +44,6 @@ public class Tile {
 	/**
 	 * Adventurer on this tile, is null if there is no adventurer.
 	 *
-	 * @param adventurer the adventurer to set on this tile.
 	 * @return the adventurer on this tile.
 	 */
 	private Adventurer adventurer;
@@ -76,6 +75,17 @@ public class Tile {
 	 */
 	public boolean isAdventurerPresent() {
 		return adventurer != null;
+	}
+
+	/**
+	 * Sets the given adventurer.
+	 *
+	 * @param adventurer the adventurer to set.
+	 */
+	public void setAdventurer(Adventurer adventurer) {
+		if (type.equals(TileType.PRAIRIE)) {
+			this.adventurer = adventurer;
+		}
 	}
 
 	/**

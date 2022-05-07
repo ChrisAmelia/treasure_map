@@ -2,6 +2,7 @@ package com.treasuremap.app.model;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
@@ -86,6 +87,23 @@ public class TileTest {
 	}
 
 	/**
+	 * An adventurer cannot walk on a mountain.
+	 * Thus setting an adventurer on a tile of type mountain should do nothing.
+	 *
+	 * Testing method {@link Tile#setAdventurer(Adventurer)}.
+	 */
+	@Test
+	public void an_adventurer_cannot_be_set_on_a_mountain() {
+		Adventurer adventurer = new Adventurer();
+
+		Tile tile = new Tile();
+		tile.setType(TileType.MOUNTAIN);
+		tile.setAdventurer(adventurer);
+
+		assertFalse(tile.isAdventurerPresent());
+	}
+
+	/**
 	 * An adventurer is representated by the first letter of their name.
 	 * A tile of type {@link TileType#PRAIRIE} is representated by a space ' '.
 	 * A tile of type {@link TileType#MOUNTAIN} is representated by a plus 'x'.
@@ -96,16 +114,18 @@ public class TileTest {
 	@Test
 	public void a_tile_representation_should_match_their_type_or_the_adventurer() {
 		Tile tile = new Tile();
+		Adventurer adventurer = new Adventurer();
+		adventurer.setName("John");
 
-		// By default, a tile is a prairie
+		// By default, an adventurer without a name is representated by the letter 'A'
+		tile.setAdventurer(adventurer);
+		assertEquals("J", tile.toString());
+
+		tile.setAdventurer(null);
 		assertEquals(" ", tile.toString());
 
 		tile.setType(TileType.MOUNTAIN);
 		assertEquals("x", tile.toString());
-
-		// By default, an adventurer without a name is representated by the letter 'A'
-		tile.setAdventurer(new Adventurer());
-		assertEquals("A", tile.toString());
 
 		tile.setTreasures(7);
 		assertEquals("7", tile.toString());
