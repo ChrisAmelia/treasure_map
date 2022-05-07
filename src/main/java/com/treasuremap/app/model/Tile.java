@@ -47,4 +47,23 @@ public class Tile {
 	 * @param playerPresent true if player present, else false.
 	 */
 	private boolean playerPresent = false;
+
+	/**
+	 * Constructs a new object Tile.
+	 */
+	public Tile() {
+		this.x = 0;
+		this.y = 0;
+	}
+
+	/**
+	 * Constructs a new object Tile.
+	 *
+	 * @param x The abscissa.
+	 * @param y The ordinate.
+	 */
+	public Tile(int x, int y) {
+		this.x = x;
+		this.y = y;
+	}
 }

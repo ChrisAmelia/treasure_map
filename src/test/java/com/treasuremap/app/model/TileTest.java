@@ -28,6 +28,16 @@ public class TileTest {
 	}
 
 	/**
+	 * Testing constructor {@link #TileTest(int,int)}.
+	 */
+	public void create_new_tile_with_coordinates_should_have_given_coordinates() {
+		Tile tile = new Tile(4, 3);
+
+		assertEquals(4, tile.getX());
+		assertEquals(3, tile.getY());
+	}
+
+	/**
 	 * Testing the getters and setters.
 	 *
 	 * - {@link Adventurer#getX()}
