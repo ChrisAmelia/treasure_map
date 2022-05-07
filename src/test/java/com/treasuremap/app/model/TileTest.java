@@ -95,7 +95,7 @@ public class TileTest {
 		Tile tile = new Tile();
 
 		// By default, a tile is a prairie
-		assertEquals("*", tile.toString());
+		assertEquals(" ", tile.toString());
 
 		tile.setType(TileType.MOUNTAIN);
 		assertEquals("x", tile.toString());

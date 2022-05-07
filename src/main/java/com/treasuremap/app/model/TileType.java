@@ -6,7 +6,7 @@ package com.treasuremap.app.model;
 public enum TileType {
 	PRAIRIE {
 		public String toString() {
-			return "*";
+			return " ";
 		}
 	},
 
