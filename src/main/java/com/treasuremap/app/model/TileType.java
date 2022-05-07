@@ -12,7 +12,7 @@ public enum TileType {
 
 	MOUNTAIN {
 		public String toString() {
-			return "M";
+			return "x";
 		}
 	}
 }

@@ -77,4 +77,13 @@ public class Tile {
 	public boolean isAdventurerPresent() {
 		return adventurer != null;
 	}
+
+	@Override
+	public String toString() {
+		if (adventurer != null) {
+			return adventurer.toString();
+		}
+
+		return type.toString();
+	}
 }

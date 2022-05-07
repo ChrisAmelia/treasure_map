@@ -82,4 +82,26 @@ public class TileTest {
 
 		assertTrue(tile.isAdventurerPresent());
 	}
+
+	/**
+	 * An adventurer is representated by the first letter of their name.
+	 * A tile of type {@link TileType#PRAIRIE} is representated by a star '*'.
+	 * A tile of type {@link TileType#MOUNTAIN} is representated by a plus 'x'.
+	 *
+	 * Testing method {@link Tile#toString()}.
+	 */
+	@Test
+	public void a_tile_representation_should_match_their_type_or_the_adventurer() {
+		Tile tile = new Tile();
+
+		// By default, a tile is a prairie
+		assertEquals("*", tile.toString());
+
+		tile.setType(TileType.MOUNTAIN);
+		assertEquals("x", tile.toString());
+
+		// By default, an adventurer without a name is representated by the letter 'A'
+		tile.setAdventurer(new Adventurer());
+		assertEquals("A", tile.toString());
+	}
 }
