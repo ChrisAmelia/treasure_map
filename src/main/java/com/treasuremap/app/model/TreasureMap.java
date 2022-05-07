@@ -11,7 +11,7 @@ public class TreasureMap {
 	 * The width of the map.
 	 *
 	 * @param width The width to set.
-	 * @param the width of the map.
+	 * @return the width of the map.
 	 */
 	private int width;
 
@@ -19,7 +19,7 @@ public class TreasureMap {
 	 * The height of the map.
 	 *
 	 * @param height The height to set.
-	 * @param the height of the map.
+	 * @return the height of the map.
 	 */
 	private int height;
 }
