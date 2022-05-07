@@ -21,6 +21,8 @@ public class TileTest {
 
 	/**
 	 * When a new tile is created, the default coordinates should be (0,0) .
+	 *
+	 * Testing default constructor {@link com.treasuremap.app.model.Tile()}.
 	 */
 	@Test
 	public void new_tile_coordinates_should_be_zero() {
@@ -30,7 +32,7 @@ public class TileTest {
 	}
 
 	/**
-	 * Testing constructor {@link #TileTest(int,int)}.
+	 * Testing constructor {@link com.treasuremap.app.model.Tile(int,int)}.
 	 */
 	public void create_new_tile_with_coordinates_should_have_given_coordinates() {
 		Tile tile = new Tile(4, 3);
