@@ -78,8 +78,17 @@ public class Tile {
 		return adventurer != null;
 	}
 
+	/**
+	 * Returns a string representation of the current tile.
+	 * By order of importance: check if there are treasures, then if there is an adventurer,
+	 * in the last case, the tile is a plain prairie or mountain.
+	 */
 	@Override
 	public String toString() {
+		if (treasures > 0) {
+			return String.valueOf(treasures);
+		}
+
 		if (adventurer != null) {
 			return adventurer.toString();
 		}

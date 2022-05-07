@@ -85,8 +85,9 @@ public class TileTest {
 
 	/**
 	 * An adventurer is representated by the first letter of their name.
-	 * A tile of type {@link TileType#PRAIRIE} is representated by a star '*'.
+	 * A tile of type {@link TileType#PRAIRIE} is representated by a space ' '.
 	 * A tile of type {@link TileType#MOUNTAIN} is representated by a plus 'x'.
+	 * A tile containing treasures is representated by the number of treasures.
 	 *
 	 * Testing method {@link Tile#toString()}.
 	 */
@@ -103,5 +104,8 @@ public class TileTest {
 		// By default, an adventurer without a name is representated by the letter 'A'
 		tile.setAdventurer(new Adventurer());
 		assertEquals("A", tile.toString());
+
+		tile.setTreasures(7);
+		assertEquals("7", tile.toString());
 	}
 }
