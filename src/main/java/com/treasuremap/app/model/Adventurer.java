@@ -8,6 +8,14 @@ import lombok.Data;
 @Data
 public class Adventurer {
 	/**
+	 * The adventurer's name.
+	 *
+	 * @param name The name to set.
+	 * @return the adventurer's name.
+	 */
+	private String name;
+
+	/**
 	 * The number of treasures the adventurer has.
 	 *
 	 * @return the number of treasures.
