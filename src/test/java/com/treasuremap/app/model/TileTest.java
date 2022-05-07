@@ -29,6 +29,15 @@ public class TileTest {
 
 	/**
 	 * Testing the getters and setters.
+	 *
+	 * - {@link Adventurer#getX()}
+	 * - {@link Adventurer#getY()}
+	 * - {@link Adventurer#getType()}
+	 * - {@link Adventurer#getTreasures()}
+	 * - {@link Adventurer#setX(int)}
+	 * - {@link Adventurer#setY(int)}
+	 * - {@link Adventurer#setType(TileType)}
+	 * - {@link Adventurer#setTreasures(int)()}
 	 */
 	@Test
 	public void modified_tile_should_return_modified_values() {
