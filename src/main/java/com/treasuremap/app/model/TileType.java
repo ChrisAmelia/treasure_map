@@ -4,5 +4,15 @@ package com.treasuremap.app.model;
  * TileType
  */
 public enum TileType {
-	PRAIRIE, MOUNTAIN
+	PRAIRIE {
+		public String toString() {
+			return "*";
+		}
+	},
+
+	MOUNTAIN {
+		public String toString() {
+			return "M";
+		}
+	}
 }
