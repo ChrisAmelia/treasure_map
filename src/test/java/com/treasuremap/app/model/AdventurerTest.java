@@ -56,6 +56,8 @@ public class AdventurerTest {
 	/**
 	 * The number of treasures must be a positive number.
 	 * If a negative number is provided then nothing happens.
+	 *
+	 * Testing method {@link Adventurer#setTreasures(int)}.
 	 */
 	@Test
 	public void setting_treasures_should_be_positive() {
