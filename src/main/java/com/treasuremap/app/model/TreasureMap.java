@@ -45,6 +45,32 @@ public class TreasureMap {
 		return tiles[0].length;
 	}
 
+
+	/**
+	 * Adds the given adventurer to the given coordinates and returns true.
+	 * Returns false if the given adventurer cannot be added, reasons for that to occur are:
+	 * - the tile contains treasures,
+	 * - the tile is a mountain,
+	 * - the tile is already occupied by another adventurer.
+	 * Use this method to initialize the adventurers at the beginning.
+	 *
+	 * @param adventurer The adventurer to add.
+	 * @param x          The abscissa of the adventurer.
+	 * @param y          The ordinate of the adventurer.
+	 * @return true if the adventurer is added, else false.
+	 */
+	public boolean addAdventurer(Adventurer adventurer, int x, int y) {
+		Tile tile = getTiles()[x][y];
+
+		if (tile.isMountain()) {
+			return false;
+		}
+
+		tile.setAdventurer(adventurer);
+
+		return true;
+	}
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();

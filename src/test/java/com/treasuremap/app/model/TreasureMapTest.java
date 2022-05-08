@@ -32,4 +32,26 @@ public class TreasureMapTest {
 		assertEquals(6, map.getHeight());
 	}
 
+	/**
+	 * Adding an adventurer on a tile of type mountain should do nothing.
+	 *
+	 * Testing method {@link TreasureMap#addAdventurer(Adventurer, int, int)}.
+	 */
+	@Test
+	public void an_adventurer_cannot_be_added_on_a_mountain() {
+		Adventurer adventurer = new Adventurer();
+		TreasureMap map = new TreasureMap(5, 6);
+		Tile[][] tiles = map.getTiles();
+
+		int x = 2;
+		int y = 2;
+
+		Tile mountainTile = tiles[2][2];
+		mountainTile.setType(TileType.MOUNTAIN);
+
+		boolean isAdded = map.addAdventurer(adventurer, 2, 2);
+
+		assertFalse(isAdded);
+	}
+
 }
