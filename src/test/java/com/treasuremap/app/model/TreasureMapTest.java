@@ -263,6 +263,15 @@ public class TreasureMapTest {
 	/**
 	 * When an adventurer moves to the next tile, the previous tile should be free.
 	 *
+	 *                           E      
+	 * +---+---+---+       +---+---+---+
+	 * |   |   |   |       |   |   |   |
+	 * +---+---+---+       +---+---+---+
+	 * |   | A |   | moves |   |   | A |
+	 * +---+---+---+       +---+---+---+
+	 * |   |   |   |       |   |   |   |
+	 * +---+---+---+       +---+---+---+
+
 	 * Testing method {@link TreasureMap#moveAdventurer(Adventurer)}
 	 */
 	@Test
