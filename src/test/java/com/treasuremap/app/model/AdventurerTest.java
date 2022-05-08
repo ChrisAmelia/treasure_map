@@ -38,7 +38,7 @@ public class AdventurerTest {
 	 * The method {@link Adventurer#toString()} should return the first letter of the adventurer's name.
 	 * If no name is initialized or if it's empty, then returns by default the string "A".
 	 *
-	 * - Testing method {@link Adventurer#toString()}
+	 * Testing method {@link Adventurer#toString()}.
 	 */
 	@Test
 	public void to_string_should_return_the_first_letter_of_the_name() {
