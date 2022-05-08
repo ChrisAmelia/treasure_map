@@ -247,4 +247,24 @@ public class TreasureMapTest {
 
 		assertTrue(tile.isAdventurerPresent());
 	}
+
+	/**
+	 * When an adventurer moves to the next tile, the previous tile should be free.
+	 *
+	 * Testing method {@link TreasureMap#moveAdventurer(Adventurer)}
+	 */
+	@Test
+	public void when_adventurer_moves_previous_tile_should_be_free() {
+		TreasureMap map = new TreasureMap(3, 3);
+		Adventurer adventurer = new Adventurer();
+		adventurer.setOrientation(Orientation.SOUTH);
+
+		map.addAdventurer(adventurer, 1, 1);
+		map.moveAdventurer(adventurer);
+
+		Tile[][] tiles = map.getTiles();
+		Tile tile = tiles[1][1];
+
+		assertFalse(tile.isAdventurerPresent());
+	}
 }

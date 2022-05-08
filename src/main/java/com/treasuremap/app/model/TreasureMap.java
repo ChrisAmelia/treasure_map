@@ -122,15 +122,34 @@ public class TreasureMap {
 	 * +---+---+---+       +---+---+---+   +---+---+---+   +---+---+---+   +---+---+---+
 	 */
 	public void moveAdventurer(Adventurer adventurer) {
+		int x = adventurer.getX();
+		int y = adventurer.getY();
+
 		if (adventurer.isFacing(Orientation.NORTH)) {
-			addAdventurer(adventurer, adventurer.getX() - 1, adventurer.getY());
+			addAdventurer(adventurer, x - 1, y);
+			removeAdventurer(x, y);
 		} else if (adventurer.isFacing(Orientation.SOUTH)) {
-			addAdventurer(adventurer, adventurer.getX() + 1, adventurer.getY());
+			addAdventurer(adventurer, x + 1, y);
+			removeAdventurer(x, y);
 		} else if (adventurer.isFacing(Orientation.EAST)) {
-			addAdventurer(adventurer, adventurer.getX(), adventurer.getY() + 1);
+			addAdventurer(adventurer, x, y + 1);
+			removeAdventurer(x, y);
 		} else if (adventurer.isFacing(Orientation.WEST)) {
-			addAdventurer(adventurer, adventurer.getX(), adventurer.getY() - 1);
+			addAdventurer(adventurer, x, y - 1);
+			removeAdventurer(x, y);
 		}
+	}
+
+	/**
+	 * Removes an adventurer given by its coordinates.
+	 *
+	 * @param x the abscissa.
+	 * @param y the ordinate.
+	 */
+	public void removeAdventurer(int x, int y) {
+		Tile[][] tiles = getTiles();
+		Tile tile = tiles[x][y];
+		tile.setAdventurer(null);
 	}
 
 	@Override
