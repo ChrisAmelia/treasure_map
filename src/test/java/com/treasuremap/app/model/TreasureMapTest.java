@@ -1,6 +1,7 @@
 package com.treasuremap.app.model;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.fail;
 import org.junit.Test;
 
@@ -55,7 +56,7 @@ public class TreasureMapTest {
 	}
 
 	/**
-	 * An adventur cannot be added on the top of another adventurer.
+	 * An adventurer cannot be added on the top of another adventurer.
 	 *
 	 * Testing method {@link TreasureMap#addAdventurer(Adventurer, int, int)}.
 	 */
