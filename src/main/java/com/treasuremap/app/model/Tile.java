@@ -1,5 +1,7 @@
 package com.treasuremap.app.model;
 
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 import lombok.Data;
 
 /**
@@ -47,6 +49,11 @@ public class Tile {
 	 * @return the adventurer on this tile.
 	 */
 	private Adventurer adventurer;
+
+	/**
+	 * Lock for synchronization purpose.
+	 */
+	private Lock lock = new ReentrantLock();
 
 	/**
 	 * Constructs a new object Tile.
