@@ -230,7 +230,8 @@ public class TreasureMapTest {
 	 * +---+---+---+       +---+---+---+
 	 * |   |   |   |       |   |   |   |
 	 * +---+---+---+       +---+---+---+
-
+	 *
+	 * Testing method {@link TreasureMap#moveAdventurer(Adventurer)}.
 	 */
 	@Test
 	public void an_adventurer_facing_west_should_move_left() {
