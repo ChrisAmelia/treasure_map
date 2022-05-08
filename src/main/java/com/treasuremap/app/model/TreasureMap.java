@@ -47,7 +47,6 @@ public class TreasureMap {
 		return tiles[0].length;
 	}
 
-
 	/**
 	 * Adds the given adventurer to the given coordinates and returns true.
 	 * Returns false if the given adventurer cannot be added, reasons for that to occur are:
