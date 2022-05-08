@@ -130,4 +130,27 @@ public class TileTest {
 		tile.setTreasures(7);
 		assertEquals("7", tile.toString());
 	}
+
+	/**
+	 * Testing tiles checking methods.
+	 *
+	 * - {@link Tile#isMountain()}
+	 * - {@link Tile#isPrairie()}
+	 * - {@link Tile#hasTreasures()}
+	 */
+	@Test
+	public void check_tiles_checking_methods() {
+		Tile mountain = new Tile();
+		mountain.setType(TileType.MOUNTAIN);
+
+		assertTrue(mountain.isMountain());
+
+		Tile prairie = new Tile();
+		prairie.setType(TileType.PRAIRIE);
+
+		assertTrue(prairie.isPrairie());
+
+		prairie.setTreasures(32767);
+		prairie.hasTreasures();
+	}
 }

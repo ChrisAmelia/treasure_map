@@ -89,6 +89,33 @@ public class Tile {
 	}
 
 	/**
+	 * Returns true if this tile is a mountain.
+	 *
+	 * @return true if this tile is a mountain.
+	 */
+	public boolean isMountain() {
+		return getType().equals(TileType.MOUNTAIN);
+	}
+
+	/**
+	 * Returns true if this tile is a prairie.
+	 *
+	 * @return true if this tile is a prairie.
+	 */
+	public boolean isPrairie() {
+		return getType().equals(TileType.PRAIRIE);
+	}
+
+	/**
+	 * Returns true if this tile has treasures.
+	 *
+	 * @return true if this tile has treasures.
+	 */
+	public boolean hasTreasures() {
+		return getTreasures() > 0;
+	}
+
+	/**
 	 * Returns a string representation of the current tile.
 	 * By order of importance: check if there are treasures, then if there is an adventurer,
 	 * in the last case, the tile is a plain prairie or mountain.
