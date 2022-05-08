@@ -279,4 +279,67 @@ public class TreasureMapTest {
 
 		assertFalse(tile.isAdventurerPresent());
 	}
+
+	/**
+	 * Adventurers cannot moves past the map's bounds, they stay on site if they attempt to do so.
+	 * In the example below,
+	 * - A(0, 1) is facing north and is attempting to move up, 
+	 * - B(1, 0) is facing west and is attempting to move left,
+	 * - C(2, 1) is facing south and is attempting to move down,
+	 * - D(1, 2) is facing east and is attempting to move right.
+	 *
+	 * +---+---+---+       +---+---+---+
+	 * |   | A |   |       |   | A |   |
+	 * +---+---+---+       +---+---+---+
+	 * | B |   | D | moves | B |   | D |
+	 * +---+---+---+       +---+---+---+
+	 * |   | C |   |       |   | C |   |
+	 * +---+---+---+       +---+---+---+
+	 *
+	 * Testing method {@link TreasureMap#moveAdventurer(Adventurer)}.
+	 */
+	@Test
+	public void an_adventurer_cannot_move_past_map_bounds() {
+		TreasureMap map = new TreasureMap(3, 3);
+
+		Adventurer adventurerA = new Adventurer();
+		adventurerA.setName("A");
+		adventurerA.setOrientation(Orientation.NORTH);
+		int xA = 0;
+		int yA = 1;
+
+		Adventurer adventurerB = new Adventurer();
+		adventurerB.setName("B");
+		adventurerB.setOrientation(Orientation.WEST);
+		int xB = 1;
+		int yB = 0;
+
+		Adventurer adventurerC = new Adventurer();
+		adventurerC.setName("C");
+		adventurerC.setOrientation(Orientation.SOUTH);
+		int xC = 2;
+		int yC = 1;
+
+		Adventurer adventurerD = new Adventurer();
+		adventurerD.setName("D");
+		adventurerD.setOrientation(Orientation.EAST);
+		int xD = 1;
+		int yD = 2;
+
+		map.addAdventurer(adventurerA, xA, yA);
+		map.addAdventurer(adventurerB, xB, yB);
+		map.addAdventurer(adventurerC, xC, yC);
+		map.addAdventurer(adventurerD, xD, yD);
+
+		Tile[][] tiles = map.getTiles();
+		Tile tileA = tiles[xA][yA];
+		Tile tileB = tiles[xB][yB];
+		Tile tileC = tiles[xC][yC];
+		Tile tileD = tiles[xD][yD];
+
+		assertTrue(tileA.isAdventurerPresent());
+		assertTrue(tileB.isAdventurerPresent());
+		assertTrue(tileC.isAdventurerPresent());
+		assertTrue(tileD.isAdventurerPresent());
+	}
 }

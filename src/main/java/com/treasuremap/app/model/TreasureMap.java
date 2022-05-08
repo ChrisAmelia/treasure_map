@@ -61,6 +61,10 @@ public class TreasureMap {
 	 * @return true if the adventurer is added, else false.
 	 */
 	public boolean addAdventurer(Adventurer adventurer, int x, int y) {
+		if (!areCoordinatesWithinBounds(x, y)) {
+			return false;
+		}
+
 		Tile tile = getTiles()[x][y];
 
 		if (tile.isMountain()) {
@@ -139,6 +143,21 @@ public class TreasureMap {
 		if (hasAdventurerMoved) {
 			removeAdventurer(oldX, oldY);
 		}
+	}
+
+	/**
+	 * Returns true if the given coordinates are within the map's bounds, else false.
+	 *
+	 * @param x The abscissa.
+	 * @param y the ordinate.
+	 * @return true if the given coordinates are within the map's bounds, else false.
+	 */
+	private boolean areCoordinatesWithinBounds(int x, int y) {
+		if (x < 0) return false;
+		if (x > getTiles().length - 1)  return false;
+		if (y < 0) return false;
+		if (y > tiles[0].length - 1) return false;
+		return true;
 	}
 
 	/**
