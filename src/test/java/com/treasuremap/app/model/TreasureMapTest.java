@@ -351,4 +351,36 @@ public class TreasureMapTest {
 		assertTrue(tileC.isAdventurerPresent());
 		assertTrue(tileD.isAdventurerPresent());
 	}
+
+	/**
+	 * An adventurer cannot move onto a mountain.
+	 * In attempting to do so, they should remain on site.
+	 *
+	 *                           E      
+	 * +---+---+---+       +---+---+---+
+	 * |   |   |   |       |   |   |   |
+	 * +---+---+---+       +---+---+---+
+	 * |   | A | * | moves |   | A | * |
+	 * +---+---+---+       +---+---+---+
+	 * |   |   |   |       |   |   |   |
+	 * +---+---+---+       +---+---+---+
+
+	 * Testing method {@link TreasureMap#moveAdventurer(Adventurer)}.
+	 */
+	@Test
+	public void an_adventurer_cannot_move_onto_a_mountain() {
+		TreasureMap map = new TreasureMap(3, 3);
+		Tile[][] tiles = map.getTiles();
+		tiles[1][2].setType(TileType.MOUNTAIN);
+
+		Adventurer adventurer = new Adventurer();
+
+		map.addAdventurer(adventurer, 1, 1);
+
+		Tile mountain = tiles[1][2];
+		Tile currentTile = tiles[1][1];
+
+		assertFalse(mountain.isAdventurerPresent());
+		assertTrue(currentTile.isAdventurerPresent());
+	}
 }
