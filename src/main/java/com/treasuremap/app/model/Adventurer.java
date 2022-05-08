@@ -31,6 +31,14 @@ public class Adventurer {
 	private Orientation orientation;
 
 	/**
+	 * The path.
+	 *
+	 * @param path the path to set.
+	 * @return the path.
+	 */
+	private String path;
+
+	/**
 	 * Sets the treasures.
 	 *
 	 * @param treasures the number of treasures to set.

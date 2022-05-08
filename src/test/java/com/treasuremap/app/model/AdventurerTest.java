@@ -14,9 +14,11 @@ public class AdventurerTest {
 	 * - {@link Adventurer#getName()}
 	 * - {@link Adventurer#getOrientation()}
 	 * - {@link Adventurer#getTreasures()}
+	 * - {@link Adventurer#getPath()}
 	 * - {@link Adventurer#setTreasures(int)}
 	 * - {@link Adventurer#setName(String)}
 	 * - {@link Adventurer#setOrientation(Orientation)}
+	 * - {@link Adventurer#setPath(String)}
 	 */
 	@Test
 	public void modified_adventurer_should_return_modified_values() {
@@ -24,10 +26,12 @@ public class AdventurerTest {
 		adventurer.setTreasures(32767);
 		adventurer.setName("John");
 		adventurer.setOrientation(Orientation.WEST);
+		adventurer.setPath("AADADAGA");
 
 		assertEquals("John", adventurer.getName());
 		assertEquals(32767, adventurer.getTreasures());
 		assertEquals(Orientation.WEST, adventurer.getOrientation());
+		assertEquals("AADADAGA", adventurer.getPath());
 	}
 
 	/**
