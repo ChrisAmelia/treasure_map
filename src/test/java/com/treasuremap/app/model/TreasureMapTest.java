@@ -54,4 +54,28 @@ public class TreasureMapTest {
 		assertFalse(isAdded);
 	}
 
+	/**
+	 * An adventur cannot be added on the top of another adventurer.
+	 *
+	 * Testing method {@link TreasureMap#addAdventurer(Adventurer, int, int)}.
+	 */
+	@Test
+	public void an_adventurer_cannot_be_added_on_another_tile_occupied_by_an_adventurer() {
+		Adventurer foo = new Adventurer();
+		foo.setName("Foo");
+
+		Adventurer bar = new Adventurer();
+		bar.setName("Bar");
+
+		TreasureMap map = new TreasureMap(5, 6);
+
+		int x = 2;
+		int y = 2;
+
+		map.addAdventurer(foo, x, y);
+
+		boolean isAdded = map.addAdventurer(bar, x, y);
+
+		assertFalse(isAdded);
+	}
 }

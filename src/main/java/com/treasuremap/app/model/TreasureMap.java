@@ -66,6 +66,10 @@ public class TreasureMap {
 			return false;
 		}
 
+		if (tile.isAdventurerPresent()) {
+			return false;
+		}
+
 		tile.setAdventurer(adventurer);
 
 		return true;
