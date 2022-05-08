@@ -156,7 +156,7 @@ public class TreasureMapTest {
 	 * |   |   |   |       |   |   |   |
 	 * +---+---+---+       +---+---+---+
 	 *
-	 * Testing method {@link TreasureMap#moveAdventurer(Adventurer)}.
+	 * Testing method {@link TreasureMap#moveAdventurerForward(Adventurer)}.
 	 */
 	@Test
 	public void an_adventurer_facing_north_should_move_up() {
@@ -165,7 +165,7 @@ public class TreasureMapTest {
 		adventurer.setOrientation(Orientation.NORTH);
 
 		map.addAdventurer(adventurer, 1, 1);
-		map.moveAdventurer(adventurer);
+		map.moveAdventurerForward(adventurer);
 
 		Tile[][] tiles = map.getTiles();
 		Tile tile = tiles[0][1];
@@ -185,7 +185,7 @@ public class TreasureMapTest {
 	 * |   |   |   |       |   | A |   |
 	 * +---+---+---+       +---+---+---+
 	 *
-	 * Testing method {@link TreasureMap#moveAdventurer(Adventurer)}.
+	 * Testing method {@link TreasureMap#moveAdventurerForward(Adventurer)}.
 	 */
 	@Test
 	public void an_adventurer_facing_south_should_move_down() {
@@ -194,7 +194,7 @@ public class TreasureMapTest {
 		adventurer.setOrientation(Orientation.SOUTH);
 
 		map.addAdventurer(adventurer, 1, 1);
-		map.moveAdventurer(adventurer);
+		map.moveAdventurerForward(adventurer);
 
 		Tile[][] tiles = map.getTiles();
 		Tile tile = tiles[2][1];
@@ -214,7 +214,7 @@ public class TreasureMapTest {
 	 * |   |   |   |       |   |   |   |
 	 * +---+---+---+       +---+---+---+
 	 *
-	 * Testing method {@link TreasureMap#moveAdventurer(Adventurer)}.
+	 * Testing method {@link TreasureMap#moveAdventurerForward(Adventurer)}.
 	 */
 	@Test
 	public void an_adventurer_facing_east_should_move_right() {
@@ -223,7 +223,7 @@ public class TreasureMapTest {
 		adventurer.setOrientation(Orientation.EAST);
 
 		map.addAdventurer(adventurer, 1, 1);
-		map.moveAdventurer(adventurer);
+		map.moveAdventurerForward(adventurer);
 
 		Tile[][] tiles = map.getTiles();
 		Tile tile = tiles[1][2];
@@ -243,7 +243,7 @@ public class TreasureMapTest {
 	 * |   |   |   |       |   |   |   |
 	 * +---+---+---+       +---+---+---+
 	 *
-	 * Testing method {@link TreasureMap#moveAdventurer(Adventurer)}.
+	 * Testing method {@link TreasureMap#moveAdventurerForward(Adventurer)}.
 	 */
 	@Test
 	public void an_adventurer_facing_west_should_move_left() {
@@ -252,7 +252,7 @@ public class TreasureMapTest {
 		adventurer.setOrientation(Orientation.WEST);
 
 		map.addAdventurer(adventurer, 1, 1);
-		map.moveAdventurer(adventurer);
+		map.moveAdventurerForward(adventurer);
 
 		Tile[][] tiles = map.getTiles();
 		Tile tile = tiles[1][0];
@@ -272,7 +272,7 @@ public class TreasureMapTest {
 	 * |   |   |   |       |   |   |   |
 	 * +---+---+---+       +---+---+---+
 
-	 * Testing method {@link TreasureMap#moveAdventurer(Adventurer)}
+	 * Testing method {@link TreasureMap#moveAdventurerForward(Adventurer)}
 	 */
 	@Test
 	public void when_adventurer_moves_previous_tile_should_be_free() {
@@ -281,7 +281,7 @@ public class TreasureMapTest {
 		adventurer.setOrientation(Orientation.SOUTH);
 
 		map.addAdventurer(adventurer, 1, 1);
-		map.moveAdventurer(adventurer);
+		map.moveAdventurerForward(adventurer);
 
 		Tile[][] tiles = map.getTiles();
 		Tile tile = tiles[1][1];
@@ -305,7 +305,7 @@ public class TreasureMapTest {
 	 * |   | C |   |       |   | C |   |
 	 * +---+---+---+       +---+---+---+
 	 *
-	 * Testing method {@link TreasureMap#moveAdventurer(Adventurer)}.
+	 * Testing method {@link TreasureMap#moveAdventurerForward(Adventurer)}.
 	 */
 	@Test
 	public void an_adventurer_cannot_move_past_map_bounds() {
@@ -365,7 +365,7 @@ public class TreasureMapTest {
 	 * |   |   |   |       |   |   |   |
 	 * +---+---+---+       +---+---+---+
 	 *
-	 * Testing method {@link TreasureMap#moveAdventurer(Adventurer)}.
+	 * Testing method {@link TreasureMap#moveAdventurerForward(Adventurer)}.
 	 */
 	@Test
 	public void an_adventurer_cannot_move_onto_a_mountain() {

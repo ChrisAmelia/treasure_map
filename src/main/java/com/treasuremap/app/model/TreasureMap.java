@@ -125,7 +125,7 @@ public class TreasureMap {
 	 * |   |   |   |       |   |   |   |   |   | A |   |   |   |   |   |   |   |   |   |
 	 * +---+---+---+       +---+---+---+   +---+---+---+   +---+---+---+   +---+---+---+
 	 */
-	public void moveAdventurer(Adventurer adventurer) {
+	public void moveAdventurerForward(Adventurer adventurer) {
 		int oldX = adventurer.getX();
 		int oldY = adventurer.getY();
 		boolean hasAdventurerMoved = false;
