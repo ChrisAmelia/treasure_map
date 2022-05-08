@@ -48,13 +48,10 @@ public class TreasureMap {
 	}
 
 	/**
-	 * Adds the given adventurer to the given coordinates and returns true.
-	 * Returns false if the given adventurer cannot be added, reasons for that to occur are:
-	 * - the tile contains treasures,
-	 * - the tile is a mountain,
-	 * - the tile is already occupied by another adventurer.
+	 * Adds the given adventurer to the given coordinates and returns true, else false.
 	 * Use this method to initialize the adventurers at the beginning.
 	 *
+	 * @see   #canAdventurerMoveToTile(int, int)
 	 * @param adventurer The adventurer to add.
 	 * @param x          The abscissa of the adventurer.
 	 * @param y          The ordinate of the adventurer.
@@ -79,7 +76,9 @@ public class TreasureMap {
 	}
 
 	/**
-	 * Returns true if an adventurer can move to given coordinates, else false.
+	 * Returns true if an adventurer can move to given coordinates, else false; reasons for that to occur are:
+	 * - the tile is a mountain,
+	 * - the tile is already occupied by another adventurer.
 	 *
 	 * @param x the abscissa to test.
 	 * @param y the ordinate to test.
