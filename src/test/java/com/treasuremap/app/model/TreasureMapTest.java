@@ -222,12 +222,28 @@ public class TreasureMapTest {
 	/**
 	 * When an adventurer faces west, they should move left.
 	 *
-	 * Testing method {@link TreasureMap#moveAdventurer(Adventurer)}.
+	 *                           W      
+	 * +---+---+---+       +---+---+---+
+	 * |   |   |   |       |   |   |   |
+	 * +---+---+---+       +---+---+---+
+	 * |   | A |   | moves | W |   |   |
+	 * +---+---+---+       +---+---+---+
+	 * |   |   |   |       |   |   |   |
+	 * +---+---+---+       +---+---+---+
+
 	 */
 	@Test
 	public void an_adventurer_facing_west_should_move_left() {
 		TreasureMap map = new TreasureMap(3, 3);
 		Adventurer adventurer = new Adventurer();
+		adventurer.setOrientation(Orientation.WEST);
+
 		map.addAdventurer(adventurer, 1, 1);
+		map.moveAdventurer(adventurer);
+
+		Tile[][] tiles = map.getTiles();
+		Tile tile = tiles[1][0];
+
+		assertTrue(tile.isAdventurerPresent());
 	}
 }
