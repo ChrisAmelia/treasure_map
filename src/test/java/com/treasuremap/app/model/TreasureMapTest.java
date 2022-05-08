@@ -13,7 +13,7 @@ public class TreasureMapTest {
 	 * Check if the every tile of the map is properly initialized.
 	 * Check if the map has the proper dimensions.
 	 *
-	 * Testing: constructor {@link #TreasureMap(int,int)}.
+	 * Testing: constructor {@link com.treasuremap.app.model.TreasureMap(int,int)}.
 	 */
 	@Test
 	public void new_map_should_have_all_tiles_not_null_and_dimensions_not_null() {
