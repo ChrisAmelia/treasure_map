@@ -11,19 +11,23 @@ public class AdventurerTest {
 	/**
 	 * Testing the getters and setters.
 	 *
-	 * - {@link Adventurer#getName()()}
+	 * - {@link Adventurer#getName()}
+	 * - {@link Adventurer#getOrientation()}
 	 * - {@link Adventurer#getTreasures()}
 	 * - {@link Adventurer#setTreasures(int)}
 	 * - {@link Adventurer#setName(String)}
+	 * - {@link Adventurer#setOrientation(Orientation)}
 	 */
 	@Test
 	public void modified_adventurer_should_return_modified_values() {
 		Adventurer adventurer = new Adventurer();
 		adventurer.setTreasures(32767);
 		adventurer.setName("John");
+		adventurer.setOrientation(Orientation.WEST);
 
 		assertEquals("John", adventurer.getName());
 		assertEquals(32767, adventurer.getTreasures());
+		assertEquals(Orientation.WEST, adventurer.getOrientation());
 	}
 
 	/**

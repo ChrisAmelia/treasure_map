@@ -23,6 +23,14 @@ public class Adventurer {
 	private int treasures;
 
 	/**
+	 * The orientation.
+	 *
+	 * @param orientation the orientation to set.
+	 * @return the orientation.
+	 */
+	private Orientation orientation;
+
+	/**
 	 * Sets the treasures.
 	 *
 	 * @param treasures the number of treasures to set.
