@@ -91,7 +91,9 @@ public class Tile {
 	 */
 	public void setAdventurer(Adventurer adventurer) {
 		if (type.equals(TileType.PRAIRIE)) {
+			lock.lock();
 			this.adventurer = adventurer;
+			lock.unlock();
 		}
 	}
 
