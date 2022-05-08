@@ -61,6 +61,31 @@ public class TreasureMap {
 	 * @return true if the adventurer is added, else false.
 	 */
 	public boolean addAdventurer(Adventurer adventurer, int x, int y) {
+		if (!canAdventurerMoveToTile(x, y)) {
+			return false;
+		}
+
+		Tile tile = getTiles()[x][y];
+
+		if (tile.hasTreasures()) {
+			adventurer.gainTreasures(tile);
+		}
+
+		tile.setAdventurer(adventurer);
+		adventurer.setX(x);
+		adventurer.setY(y);
+
+		return true;
+	}
+
+	/**
+	 * Returns true if an adventurer can move to given coordinates, else false.
+	 *
+	 * @param x the abscissa to test.
+	 * @param y the ordinate to test.
+	 * @return true if an adventurer can move to given coordinates, else false.
+	 */
+	private boolean canAdventurerMoveToTile(int x, int y) {
 		if (!areCoordinatesWithinBounds(x, y)) {
 			return false;
 		}
@@ -74,14 +99,6 @@ public class TreasureMap {
 		if (tile.isAdventurerPresent()) {
 			return false;
 		}
-
-		if (tile.hasTreasures()) {
-			adventurer.gainTreasures(tile);
-		}
-
-		tile.setAdventurer(adventurer);
-		adventurer.setX(x);
-		adventurer.setY(y);
 
 		return true;
 	}
