@@ -57,7 +57,7 @@ public class TreasureMap {
 	 * @param y          The ordinate of the adventurer.
 	 * @return true if the adventurer is added, else false.
 	 */
-	public boolean addAdventurer(Adventurer adventurer, int x, int y) {
+	public synchronized boolean addAdventurer(Adventurer adventurer, int x, int y) {
 		if (!canAdventurerMoveToTile(x, y)) {
 			return false;
 		}
