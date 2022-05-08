@@ -1,5 +1,6 @@
 package com.treasuremap.app.model;
 
+import java.util.ArrayList;
 import java.util.List;
 import lombok.Data;
 
@@ -78,6 +79,27 @@ public class TreasureMap {
 		tile.setAdventurer(adventurer);
 
 		return true;
+	}
+
+	/**
+	 * Returns the adventurers present on the map.
+	 *
+	 * @return the adventurers present on the map.
+	 */
+	public List<Adventurer> getAdventurers() {
+		List<Adventurer> adventurers = new ArrayList<>();
+
+		Tile[][] tiles = getTiles();
+
+		for (int i = 0 ; i < tiles.length ; i++) {
+			for (int j = 0 ; j < tiles[i].length ; j++) {
+				if (tiles[i][j].isAdventurerPresent()) {
+					adventurers.add(tiles[i][j].getAdventurer());
+				}
+			}
+		}
+
+		return adventurers;
 	}
 
 	@Override

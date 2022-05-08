@@ -3,6 +3,7 @@ package com.treasuremap.app.model;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.fail;
+import java.util.List;
 import org.junit.Test;
 
 /**
@@ -102,4 +103,32 @@ public class TreasureMapTest {
 
 		assertFalse(isAdded);
 	}
+
+	/**
+	 * If there are 5 adventurers present on the map, then this method
+	 * should return a list of 5 adventurers.
+	 *
+	 * Testing method {@link TreasureMap#getAdventurers()}.
+	 */
+	@Test
+	public void getAdventurers_should_return_the_exact_total_of_adventurers() {
+		TreasureMap map = new TreasureMap(7, 7);
+
+		Adventurer adventurer1 = new Adventurer();
+		Adventurer adventurer2 = new Adventurer();
+		Adventurer adventurer3 = new Adventurer();
+		Adventurer adventurer4 = new Adventurer();
+		Adventurer adventurer5 = new Adventurer();
+
+		map.addAdventurer(adventurer1, 1, 1);
+		map.addAdventurer(adventurer2, 2, 2);
+		map.addAdventurer(adventurer3, 3, 3);
+		map.addAdventurer(adventurer4, 4, 4);
+		map.addAdventurer(adventurer5, 5, 5);
+
+		List<Adventurer> adventurers = map.getAdventurers();
+
+		assertEquals(5, adventurers.size());
+	}
+
 }
