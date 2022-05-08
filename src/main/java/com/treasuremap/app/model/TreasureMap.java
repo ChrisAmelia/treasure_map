@@ -126,6 +126,8 @@ public class TreasureMap {
 			addAdventurer(adventurer, adventurer.getX() - 1, adventurer.getY());
 		} else if (adventurer.isFacing(Orientation.SOUTH)) {
 			addAdventurer(adventurer, adventurer.getX() + 1, adventurer.getY());
+		} else if (adventurer.isFacing(Orientation.EAST)) {
+			addAdventurer(adventurer, adventurer.getX(), adventurer.getY() + 1);
 		}
 	}
 
