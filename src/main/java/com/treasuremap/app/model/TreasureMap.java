@@ -1,5 +1,6 @@
 package com.treasuremap.app.model;
 
+import java.util.List;
 import lombok.Data;
 
 /**
@@ -61,6 +62,10 @@ public class TreasureMap {
 	 */
 	public boolean addAdventurer(Adventurer adventurer, int x, int y) {
 		Tile tile = getTiles()[x][y];
+
+		if (tile.hasTreasures()) {
+			return false;
+		}
 
 		if (tile.isMountain()) {
 			return false;
