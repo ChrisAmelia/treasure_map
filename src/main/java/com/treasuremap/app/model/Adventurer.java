@@ -39,6 +39,22 @@ public class Adventurer {
 	private String path;
 
 	/**
+	 * The abscissa.
+	 *
+	 * @param abscissa the abscissa to set.
+	 * @return the abscissa.
+	 */
+	private int x;
+
+	/**
+	 * The ordinate.
+	 *
+	 * @param ordinate the ordinate to set.
+	 * @return the ordinate.
+	 */
+	private int y;
+
+	/**
 	 * Sets the treasures.
 	 *
 	 * @param treasures the number of treasures to set.
@@ -56,6 +72,15 @@ public class Adventurer {
 	 */
 	public void gainTreasures(int treasures) {
 		setTreasures(getTreasures() + treasures);
+	}
+
+	/**
+	 * Returns true if given orientation matches adventurer's orientation, else false.
+	 *
+	 * @return true if given orientation matches adventurer's orientation, else false.
+	 */
+	public boolean isFacing(Orientation orientation) {
+		return this.orientation.equals(orientation);
 	}
 
 	@Override

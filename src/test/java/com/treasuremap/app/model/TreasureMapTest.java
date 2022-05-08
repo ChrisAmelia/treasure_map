@@ -2,6 +2,7 @@ package com.treasuremap.app.model;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 import java.util.List;
 import org.junit.Test;
@@ -131,4 +132,68 @@ public class TreasureMapTest {
 		assertEquals(5, adventurers.size());
 	}
 
+	/**
+	 * When an adventurer faces north, they should move up.
+	 *
+	 *                           N      
+	 * +---+---+---+       +---+---+---+
+	 * |   |   |   |       |   | A |   |
+	 * +---+---+---+       +---+---+---+
+	 * |   | A |   | moves |   |   |   |
+	 * +---+---+---+       +---+---+---+
+	 * |   |   |   |       |   |   |   |
+	 * +---+---+---+       +---+---+---+
+	 *
+	 * Testing method {@link TreasureMap#moveAdventurer(Adventurer)}.
+	 */
+	@Test
+	public void an_adventurer_facing_north_should_move_up() {
+		TreasureMap map = new TreasureMap(3, 3);
+		Adventurer adventurer = new Adventurer();
+		adventurer.setOrientation(Orientation.NORTH);
+
+		map.addAdventurer(adventurer, 1, 1);
+		map.moveAdventurer(adventurer);
+
+		Tile[][] tiles = map.getTiles();
+		Tile tile = tiles[0][1];
+
+		assertTrue(tile.isAdventurerPresent());
+	}
+
+	/**
+	 * When an adventurer faces south, they should move down.
+	 *
+	 * Testing method {@link TreasureMap#moveAdventurer(Adventurer)}.
+	 */
+	@Test
+	public void an_adventurer_facing_south_should_move_down() {
+		TreasureMap map = new TreasureMap(3, 3);
+		Adventurer adventurer = new Adventurer();
+		map.addAdventurer(adventurer, 1, 1);
+	}
+
+	/**
+	 * When an adventurer faces east, they should move right.
+	 *
+	 * Testing method {@link TreasureMap#moveAdventurer(Adventurer)}.
+	 */
+	@Test
+	public void an_adventurer_facing_east_should_move_right() {
+		TreasureMap map = new TreasureMap(3, 3);
+		Adventurer adventurer = new Adventurer();
+		map.addAdventurer(adventurer, 1, 1);
+	}
+
+	/**
+	 * When an adventurer faces west, they should move left.
+	 *
+	 * Testing method {@link TreasureMap#moveAdventurer(Adventurer)}.
+	 */
+	@Test
+	public void an_adventurer_facing_west_should_move_left() {
+		TreasureMap map = new TreasureMap(3, 3);
+		Adventurer adventurer = new Adventurer();
+		map.addAdventurer(adventurer, 1, 1);
+	}
 }

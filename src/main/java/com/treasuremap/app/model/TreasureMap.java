@@ -76,6 +76,8 @@ public class TreasureMap {
 		}
 
 		tile.setAdventurer(adventurer);
+		adventurer.setX(x);
+		adventurer.setY(y);
 
 		return true;
 	}
@@ -99,6 +101,30 @@ public class TreasureMap {
 		}
 
 		return adventurers;
+	}
+
+	/**
+	 * Makes an adventurer move forward based on their orientation:
+	 * - if NORTH then moves up, 
+	 * - if SOUTH then moves down,
+	 * - if EAST then moves right,
+	 * - if WEST then moves left.
+	 *
+	 *  Here is what to expect. The header being the orientation of the adventurer:
+	 *
+	 *                           N               S               E               W
+	 * +---+---+---+       +---+---+---+   +---+---+---+   +---+---+---+   +---+---+---+
+	 * |   |   |   |       |   | A |   |   |   |   |   |   |   |   |   |   |   |   |   |
+	 * +---+---+---+       +---+---+---+   +---+---+---+   +---+---+---+   +---+---+---+
+	 * |   | A |   | moves |   |   |   |   |   |   |   |   |   |   | A |   | A |   |   |
+	 * +---+---+---+       +---+---+---+   +---+---+---+   +---+---+---+   +---+---+---+
+	 * |   |   |   |       |   |   |   |   |   | A |   |   |   |   |   |   |   |   |   |
+	 * +---+---+---+       +---+---+---+   +---+---+---+   +---+---+---+   +---+---+---+
+	 */
+	public void moveAdventurer(Adventurer adventurer) {
+		if (adventurer.isFacing(Orientation.NORTH)) {
+			addAdventurer(adventurer, adventurer.getX() - 1, adventurer.getY());
+		}
 	}
 
 	@Override
