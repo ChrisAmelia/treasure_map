@@ -68,10 +68,11 @@ public class Adventurer {
 	/**
 	 * Adds the given treasures to the current ones.
 	 *
-	 * @parma treasures the number of gained treasures.
+	 * @param tile the tile to take the treasures from.
 	 */
-	public void gainTreasures(int treasures) {
-		setTreasures(getTreasures() + treasures);
+	public void gainTreasures(Tile tile) {
+		setTreasures(getTreasures() + tile.getTreasures());
+		tile.setTreasures(0);
 	}
 
 	/**

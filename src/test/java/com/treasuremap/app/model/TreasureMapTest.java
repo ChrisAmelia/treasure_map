@@ -83,26 +83,38 @@ public class TreasureMapTest {
 	}
 
 	/**
-	 * An adventurer cannot be added on a tile containing treasures.
+	 * An adventurer added on a tile containing treasures should gain it.
 	 *
+	 * +---+------+---+       +---+---+------+
+	 * |   |      |   |       |   |   |      |
+	 * +---+------+---+       +---+---+------+
+	 * |   | A(0) | 7 | moves |   |   | A(7) |
+	 * +---+------+---+       +---+---+------+
+	 * |   |      |   |       |   |   |      |
+	 * +---+------+---+       +---+---+------+
+
 	 * Testing method {@link TreasureMap#addAdventurer(Adventurer, int, int)}.
 	 */
 	@Test
-	public void an_adventurer_cannotbe_added_on_a_tile_with_treasures() {
-		Adventurer adventurer = new Adventurer();
-		TreasureMap map = new TreasureMap(5, 6);
+	public void an_adventurer__added_on_a_tile_with_treasures_should_gain_the_treasures() {
+		TreasureMap map = new TreasureMap(3, 3);
 
-		int x = 2;
+		Adventurer adventurer = new Adventurer();
+		adventurer.setX(1);
+		adventurer.setY(1);
+
+		// Tile's coordinates containing the treasures
+		int x = 1;
 		int y = 2;
 
 		Tile[][] tiles = map.getTiles();
 		Tile tile = tiles[x][y];
-
-		tile.setTreasures(32767);
+		tile.setTreasures(7);
 
 		boolean isAdded = map.addAdventurer(adventurer, x, y);
 
-		assertFalse(isAdded);
+		assertTrue(isAdded);
+		assertEquals(7, adventurer.getTreasures());
 	}
 
 	/**

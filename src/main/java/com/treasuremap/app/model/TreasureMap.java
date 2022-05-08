@@ -63,16 +63,16 @@ public class TreasureMap {
 	public boolean addAdventurer(Adventurer adventurer, int x, int y) {
 		Tile tile = getTiles()[x][y];
 
-		if (tile.hasTreasures()) {
-			return false;
-		}
-
 		if (tile.isMountain()) {
 			return false;
 		}
 
 		if (tile.isAdventurerPresent()) {
 			return false;
+		}
+
+		if (tile.hasTreasures()) {
+			adventurer.gainTreasures(tile);
 		}
 
 		tile.setAdventurer(adventurer);
