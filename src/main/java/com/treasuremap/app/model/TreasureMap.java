@@ -122,21 +122,22 @@ public class TreasureMap {
 	 * +---+---+---+       +---+---+---+   +---+---+---+   +---+---+---+   +---+---+---+
 	 */
 	public void moveAdventurer(Adventurer adventurer) {
-		int x = adventurer.getX();
-		int y = adventurer.getY();
+		int oldX = adventurer.getX();
+		int oldY = adventurer.getY();
+		boolean hasAdventurerMoved = false;
 
 		if (adventurer.isFacing(Orientation.NORTH)) {
-			addAdventurer(adventurer, x - 1, y);
-			removeAdventurer(x, y);
+			hasAdventurerMoved = addAdventurer(adventurer, oldX - 1, oldY);
 		} else if (adventurer.isFacing(Orientation.SOUTH)) {
-			addAdventurer(adventurer, x + 1, y);
-			removeAdventurer(x, y);
+			hasAdventurerMoved = addAdventurer(adventurer, oldX + 1, oldY);
 		} else if (adventurer.isFacing(Orientation.EAST)) {
-			addAdventurer(adventurer, x, y + 1);
-			removeAdventurer(x, y);
+			hasAdventurerMoved = addAdventurer(adventurer, oldX, oldY + 1);
 		} else if (adventurer.isFacing(Orientation.WEST)) {
-			addAdventurer(adventurer, x, y - 1);
-			removeAdventurer(x, y);
+			hasAdventurerMoved = addAdventurer(adventurer, oldX, oldY - 1);
+		}
+
+		if (hasAdventurerMoved) {
+			removeAdventurer(oldX, oldY);
 		}
 	}
 
