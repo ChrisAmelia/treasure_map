@@ -125,7 +125,7 @@ public class TreasureMap {
 
 	/**
 	 * Makes an adventurer move forward based on their orientation:
-	 * - if NORTH then moves up, 
+	 * - if NORTH then moves up,
 	 * - if SOUTH then moves down,
 	 * - if EAST then moves right,
 	 * - if WEST then moves left.

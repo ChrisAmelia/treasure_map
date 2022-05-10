@@ -85,5 +85,61 @@ public class AdventurerTest {
 
 		assertEquals(5, adventurer.getTreasures());
 	}
+
+	/**
+	 * Given the conventional clockwise directions (North, East, South, West),
+	 * turning to the right means moving one direction ahead clockwise.
+	 *
+	 * Here is an example where the cursor point to the current direction:
+	 *
+	 *    ↓                          rotating right             ↓
+	 * (NORTH, EAST, SOUTH, WEST)  ------------------> (NORTH, EAST, SOUTH, WEST)
+	 *
+	 * When reaching WEST and rotating again, the cursor comes back at the beginning, in this case, to EAST.
+	 */
+	@Test
+	public void adventurer_rotating_right_should_face_the_next_direction_clockwise() {
+		Adventurer adventurer = new Adventurer();
+
+		adventurer.setOrientation(Orientation.NORTH);
+		adventurer.rotateRight();
+		assertEquals(Orientation.EAST, adventurer.getOrientation());
+
+		adventurer.setOrientation(Orientation.EAST);
+		adventurer.rotateRight();
+		assertEquals(Orientation.SOUTH, adventurer.getOrientation());
+
+		adventurer.setOrientation(Orientation.SOUTH);
+		adventurer.rotateRight();
+		assertEquals(Orientation.WEST, adventurer.getOrientation());
+
+		adventurer.setOrientation(Orientation.WEST);
+		adventurer.rotateRight();
+		assertEquals(Orientation.NORTH, adventurer.getOrientation());
+	}
+
+	/**
+	 * @see AdventurerTest#adventurer_rotating_right_should_face_the_next_direction_clockwise()
+	 */
+	@Test
+	public void adventurer_rotating_left_should_face_the_next_direction_counterclockwise() {
+		Adventurer adventurer = new Adventurer();
+
+		adventurer.setOrientation(Orientation.NORTH);
+		adventurer.rotateLeft();
+		assertEquals(Orientation.WEST, adventurer.getOrientation());
+
+		adventurer.setOrientation(Orientation.WEST);
+		adventurer.rotateLeft();
+		assertEquals(Orientation.SOUTH, adventurer.getOrientation());
+
+		adventurer.setOrientation(Orientation.SOUTH);
+		adventurer.rotateLeft();
+		assertEquals(Orientation.EAST, adventurer.getOrientation());
+
+		adventurer.setOrientation(Orientation.EAST);
+		adventurer.rotateLeft();
+		assertEquals(Orientation.NORTH, adventurer.getOrientation());
+	}
 	
 }

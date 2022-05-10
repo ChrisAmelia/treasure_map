@@ -31,7 +31,20 @@ public class Adventurer {
 	private Orientation orientation;
 
 	/**
-	 * The path.
+	 * The path, a string containing the following chars:
+	 * - 'A', moving forward;
+	 * - 'D', turn to the right;
+	 * - 'G', turn to the left.
+	 *
+	 * Here's an example with 'AADAGA', the initial position being (0,0) (top left corner):
+	 *
+	 * +---+---+---+
+	 * | → | → | ↓ |
+	 * +---+---+---+
+	 * |   | ↓ | ← |
+	 * +---+---+---+
+	 * |   | ↓ |   |
+	 * +---+---+---+
 	 *
 	 * @param path the path to set.
 	 * @return the path.
@@ -82,6 +95,55 @@ public class Adventurer {
 	 */
 	public boolean isFacing(Orientation orientation) {
 		return this.orientation.equals(orientation);
+	}
+
+	/**
+	 * Sets the orientation to the next counterclockwise and returns the new facing direction.
+	 *
+	 * @return the new facing direction.
+	 */
+	public Orientation rotateLeft() {
+		Orientation currentOrientation = getOrientation();
+		Orientation newOrientation = Orientation.NORTH;
+
+		if (currentOrientation.equals(Orientation.NORTH)) {
+			newOrientation = Orientation.WEST;
+		} else if (currentOrientation.equals(Orientation.WEST)) {
+			newOrientation = Orientation.SOUTH;
+		} else if (currentOrientation.equals(Orientation.SOUTH)) {
+			newOrientation = Orientation.EAST;
+		} else if (currentOrientation.equals(Orientation.EAST)) {
+			newOrientation = Orientation.NORTH;
+		}
+
+		setOrientation(newOrientation);
+
+		return newOrientation;
+
+	}
+
+	/**
+	 * Sets the orientation to the next one clockwise and returns the new facing direction.
+	 *
+	 * @return the new facing direction.
+	 */
+	public Orientation rotateRight() {
+		Orientation currentOrientation = getOrientation();
+		Orientation newOrientation = Orientation.NORTH;
+
+		if (currentOrientation.equals(Orientation.NORTH)) {
+			newOrientation = Orientation.EAST;
+		} else if (currentOrientation.equals(Orientation.EAST)) {
+			newOrientation = Orientation.SOUTH;
+		} else if (currentOrientation.equals(Orientation.SOUTH)) {
+			newOrientation = Orientation.WEST;
+		} else if (currentOrientation.equals(Orientation.WEST)) {
+			newOrientation = Orientation.NORTH;
+		}
+
+		setOrientation(newOrientation);
+
+		return newOrientation;
 	}
 
 	@Override
