@@ -119,7 +119,6 @@ public class Adventurer {
 		setOrientation(newOrientation);
 
 		return newOrientation;
-
 	}
 
 	/**
