@@ -96,6 +96,8 @@ public class AdventurerTest {
 	 * (NORTH, EAST, SOUTH, WEST)  ------------------> (NORTH, EAST, SOUTH, WEST)
 	 *
 	 * When reaching WEST and rotating again, the cursor comes back at the beginning, in this case, to EAST.
+	 *
+	 * Testing method {@link Adventurer#rotateRight()}.
 	 */
 	@Test
 	public void adventurer_rotating_right_should_face_the_next_direction_clockwise() {
@@ -120,6 +122,8 @@ public class AdventurerTest {
 
 	/**
 	 * @see AdventurerTest#adventurer_rotating_right_should_face_the_next_direction_clockwise()
+	 *
+	 * Testing method {@link Adventurer#rotateLeft()}.
 	 */
 	@Test
 	public void adventurer_rotating_left_should_face_the_next_direction_counterclockwise() {
