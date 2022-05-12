@@ -111,8 +111,6 @@ public class TreasureMapTest {
 		Tile tile = tiles[ordinate][abscissa];
 		tile.setTreasures(7);
 
-		System.err.println(map.toString());
-
 		boolean isAdded = map.addAdventurer(adventurer, abscissa, ordinate);
 
 		assertTrue(isAdded);
