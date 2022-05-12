@@ -20,14 +20,14 @@ public class TreasureMap {
 	/**
 	 * Constructs a new object TreasureMap.
 	 *
-	 * @param rows the rows of the map.
-	 * @param cols the columns of the map.
+	 * @param width the width of the map.
+	 * @param height the height of the map.
 	 */
-	public TreasureMap(int rows, int cols) {
-		tiles = new Tile[rows][cols];
+	public TreasureMap(int width, int height) {
+		tiles = new Tile[height][width];
 
-		for (int i = 0 ; i < rows ; i++) {
-			for (int j = 0 ; j < cols ; j++) {
+		for (int j = 0 ; j < width ; j++) {
+			for (int i = 0 ; i < height ; i++) {
 				tiles[i][j] = new Tile(i, j);
 			}
 		}
@@ -37,14 +37,14 @@ public class TreasureMap {
 	 * Returns the width of the map.
 	 */
 	public int getWidth() {
-		return tiles.length;
+		return tiles[0].length;
 	}
 
 	/**
 	 * Returns the height of the map.
 	 */
 	public int getHeight() {
-		return tiles[0].length;
+		return tiles.length;
 	}
 
 	/**
