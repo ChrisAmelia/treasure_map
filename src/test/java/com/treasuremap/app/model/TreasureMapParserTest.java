@@ -38,9 +38,6 @@ public class TreasureMapParserTest {
 
 		TreasureMap map = parser.parseFile("src/test/resources/treasure_map_test.txt");
 
-		System.err.println("[ M A P ]");
-		System.err.println(map.toString());
-
 		// Dimensions
 		assertEquals(6, map.getWidth());
 		assertEquals(5, map.getHeight());
