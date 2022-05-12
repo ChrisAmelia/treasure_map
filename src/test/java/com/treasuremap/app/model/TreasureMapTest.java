@@ -120,7 +120,7 @@ public class TreasureMapTest {
 	}
 
 	/**
-	 * If there are 5 adventurers present on the map, then this method
+	 * If there are 5 adventurers present on the map, then this tested method
 	 * should return a list of 5 adventurers.
 	 *
 	 * Testing method {@link TreasureMap#getAdventurers()}.
