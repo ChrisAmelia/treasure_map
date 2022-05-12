@@ -53,24 +53,24 @@ public class TreasureMap {
 	 *
 	 * @see   #canAdventurerMoveToTile(int, int)
 	 * @param adventurer The adventurer to add.
-	 * @param x          The abscissa of the adventurer.
-	 * @param y          The ordinate of the adventurer.
+	 * @param abscissa   The abscissa of the adventurer.
+	 * @param ordinate   The ordinate of the adventurer.
 	 * @return true if the adventurer is added, else false.
 	 */
-	public synchronized boolean addAdventurer(Adventurer adventurer, int x, int y) {
-		if (!canAdventurerMoveToTile(x, y)) {
+	public synchronized boolean addAdventurer(Adventurer adventurer, int abscissa, int ordinate) {
+		if (!canAdventurerMoveToTile(abscissa, ordinate)) {
 			return false;
 		}
 
-		Tile tile = getTiles()[x][y];
+		Tile tile = getTiles()[ordinate][abscissa];
 
 		if (tile.hasTreasures()) {
 			adventurer.gainTreasures(tile);
 		}
 
 		tile.setAdventurer(adventurer);
-		adventurer.setX(x);
-		adventurer.setY(y);
+		adventurer.setX(abscissa);
+		adventurer.setY(ordinate);
 
 		return true;
 	}
@@ -80,16 +80,16 @@ public class TreasureMap {
 	 * - the tile is a mountain,
 	 * - the tile is already occupied by another adventurer.
 	 *
-	 * @param x the abscissa to test.
-	 * @param y the ordinate to test.
+	 * @param abscissa the abscissa to test.
+	 * @param ordinate the ordinate to test.
 	 * @return true if an adventurer can move to given coordinates, else false.
 	 */
-	private boolean canAdventurerMoveToTile(int x, int y) {
-		if (!areCoordinatesWithinBounds(x, y)) {
+	private boolean canAdventurerMoveToTile(int abscissa, int ordinate) {
+		if (!areCoordinatesWithinBounds(abscissa, ordinate)) {
 			return false;
 		}
 
-		Tile tile = getTiles()[x][y];
+		Tile tile = getTiles()[ordinate][abscissa];
 
 		if (tile.isMountain()) {
 			return false;
@@ -142,49 +142,49 @@ public class TreasureMap {
 	 * +---+---+---+       +---+---+---+   +---+---+---+   +---+---+---+   +---+---+---+
 	 */
 	public void moveAdventurerForward(Adventurer adventurer) {
-		int oldX = adventurer.getX();
-		int oldY = adventurer.getY();
+		int abscissa = adventurer.getX();
+		int ordinate = adventurer.getY();
 		boolean hasAdventurerMoved = false;
 
 		if (adventurer.isFacing(Orientation.NORTH)) {
-			hasAdventurerMoved = addAdventurer(adventurer, oldX - 1, oldY);
+			hasAdventurerMoved = addAdventurer(adventurer, ordinate, abscissa - 1);
 		} else if (adventurer.isFacing(Orientation.SOUTH)) {
-			hasAdventurerMoved = addAdventurer(adventurer, oldX + 1, oldY);
+			hasAdventurerMoved = addAdventurer(adventurer, ordinate, abscissa + 1);
 		} else if (adventurer.isFacing(Orientation.EAST)) {
-			hasAdventurerMoved = addAdventurer(adventurer, oldX, oldY + 1);
+			hasAdventurerMoved = addAdventurer(adventurer, ordinate + 1, abscissa);
 		} else if (adventurer.isFacing(Orientation.WEST)) {
-			hasAdventurerMoved = addAdventurer(adventurer, oldX, oldY - 1);
+			hasAdventurerMoved = addAdventurer(adventurer, ordinate - 1, abscissa);
 		}
 
 		if (hasAdventurerMoved) {
-			removeAdventurer(oldX, oldY);
+			removeAdventurer(abscissa, ordinate);
 		}
 	}
 
 	/**
 	 * Returns true if the given coordinates are within the map's bounds, else false.
 	 *
-	 * @param x The abscissa.
-	 * @param y the ordinate.
+	 * @param abscissa The abscissa.
+	 * @param ordinate the ordinate.
 	 * @return true if the given coordinates are within the map's bounds, else false.
 	 */
-	private boolean areCoordinatesWithinBounds(int x, int y) {
-		if (x < 0) return false;
-		if (x > getTiles().length - 1)  return false;
-		if (y < 0) return false;
-		if (y > tiles[0].length - 1) return false;
+	private boolean areCoordinatesWithinBounds(int abscissa, int ordinate) {
+		if (ordinate < 0) return false;
+		if (ordinate > getTiles().length - 1)  return false;
+		if (abscissa < 0) return false;
+		if (abscissa > tiles[0].length - 1) return false;
 		return true;
 	}
 
 	/**
 	 * Removes an adventurer given by its coordinates.
 	 *
-	 * @param x the abscissa.
-	 * @param y the ordinate.
+	 * @param abscissa the abscissa.
+	 * @param ordinate the ordinate.
 	 */
-	public void removeAdventurer(int x, int y) {
+	public void removeAdventurer(int abscissa, int ordinate) {
 		Tile[][] tiles = getTiles();
-		Tile tile = tiles[x][y];
+		Tile tile = tiles[ordinate][abscissa];
 		tile.setAdventurer(null);
 	}
 

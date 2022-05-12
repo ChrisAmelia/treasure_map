@@ -41,8 +41,8 @@ public class GameTest {
 		game.setAdventurers(Stream.of(adventurer).collect(Collectors.toList()));
 		game.executeAdventurerPath(adventurer);
 
-		assertEquals(2, adventurer.getX());
-		assertEquals(1, adventurer.getY());
+		assertEquals(1, adventurer.getX());
+		assertEquals(2, adventurer.getY());
 	}
 
 }

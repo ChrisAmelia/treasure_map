@@ -108,7 +108,7 @@ public class TreasureMapTest {
 		int y = 2;
 
 		Tile[][] tiles = map.getTiles();
-		Tile tile = tiles[x][y];
+		Tile tile = tiles[y][x];
 		tile.setTreasures(7);
 
 		boolean isAdded = map.addAdventurer(adventurer, x, y);
