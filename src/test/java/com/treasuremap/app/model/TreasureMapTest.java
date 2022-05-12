@@ -104,14 +104,16 @@ public class TreasureMapTest {
 		adventurer.setY(1);
 
 		// Tile's coordinates containing the treasures
-		int x = 1;
-		int y = 2;
+		int abscissa = 2;
+		int ordinate = 1;
 
 		Tile[][] tiles = map.getTiles();
-		Tile tile = tiles[y][x];
+		Tile tile = tiles[ordinate][abscissa];
 		tile.setTreasures(7);
 
-		boolean isAdded = map.addAdventurer(adventurer, x, y);
+		System.err.println(map.toString());
+
+		boolean isAdded = map.addAdventurer(adventurer, abscissa, ordinate);
 
 		assertTrue(isAdded);
 		assertEquals(7, adventurer.getTreasures());
