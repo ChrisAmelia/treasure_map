@@ -30,6 +30,7 @@ public class AdventurerParser {
 	 *
 	 * @param fileName File to parse.
 	 * @return a list of adventurers for given file's name.
+	 * @throws IOException Exception.
 	 */
 	public List<Adventurer> parseFile(String fileName) throws IOException {
 		List<Adventurer> adventurers = new ArrayList<>();
