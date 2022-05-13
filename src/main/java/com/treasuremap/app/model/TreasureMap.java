@@ -220,7 +220,7 @@ public class TreasureMap {
 		for (int i = 0 ; i < tiles.length ; i++) {
 			// Row index
 			for (int k = 0; k < spaces; k++) {
-				if (k == spaces / 2) {
+				if (k == (spaces / 2)) {
 					builder.append(i + 1);
 				} else {
 					builder.append(" ");
