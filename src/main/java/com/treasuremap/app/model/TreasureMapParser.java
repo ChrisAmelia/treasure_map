@@ -28,10 +28,14 @@ public class TreasureMapParser {
 	 * - M X-Y, a ountain located at (X,Y).
 	 *
 	 * Here's an example of file:
-	 * C 6 5
-	 * T 4-2 1
-	 * T 1-4 3
-	 * M 5-3
+	 * +----------+
+	 * | file.txt |
+	 * +----------+
+	 * | C 6 5    |
+	 * | T 4-2 1  |
+	 * | T 1-4 3  |
+	 * | M 5-3    |
+	 * +----------+
 	 *
 	 *     1   2   3   4   5   6
 	 *   +---+---+---+---+---+---+
