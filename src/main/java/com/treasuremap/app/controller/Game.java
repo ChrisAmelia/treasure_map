@@ -92,7 +92,8 @@ public class Game {
 			builder.append(adventurer.getName());
 			builder.append(": ");
 			builder.append("(" + (adventurer.getX() + 1) + "," + (adventurer.getY() + 1) + "), ");
-			builder.append("treasures=" + adventurer.getTreasures());
+			builder.append("treasures=" + adventurer.getTreasures() + ", ");
+			builder.append("orientation=" + adventurer.getOrientation().name());
 			builder.append("\n");
 		}
 
