@@ -98,6 +98,17 @@ public class Tile {
 	}
 
 	/**
+	 * Sets the treasure.
+	 * 
+	 * @param treasures the treasures to set.
+	 */
+	public void setTreasures(int treasures) {
+		if (!isMountain()) {
+			this.treasures = treasures;
+		}
+	}
+
+	/**
 	 * Returns true if this tile is a mountain.
 	 *
 	 * @return true if this tile is a mountain.

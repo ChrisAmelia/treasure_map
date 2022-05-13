@@ -57,14 +57,19 @@ public class TileTest {
 	@Test
 	public void modified_tile_should_return_modified_values() {
 		Tile tile = new Tile();
-		tile.setX(10);
-		tile.setY(20);
-		tile.setType(TileType.MOUNTAIN);
-		tile.setTreasures(32767);
 
+		tile.setX(10);
 		assertEquals(10, tile.getX());
+
+		tile.setY(20);
 		assertEquals(20, tile.getY());
+
+		tile.setType(TileType.MOUNTAIN);
 		assertEquals(TileType.MOUNTAIN, tile.getType());
+
+		tile.setType(TileType.PRAIRIE);
+		tile.setTreasures(32767);
+		assertEquals(TileType.PRAIRIE, tile.getType());
 		assertEquals(32767, tile.getTreasures());
 	}
 	
@@ -127,6 +132,7 @@ public class TileTest {
 		tile.setType(TileType.MOUNTAIN);
 		assertEquals("x", tile.toString());
 
+		tile.setType(TileType.PRAIRIE);
 		tile.setTreasures(7);
 		assertEquals("7", tile.toString());
 	}
@@ -152,5 +158,20 @@ public class TileTest {
 
 		prairie.setTreasures(32767);
 		prairie.hasTreasures();
+	}
+
+	/**
+	 * Cannot set treasures on a mountain.
+	 *
+	 * Testing method {@link Tile#setTreasures(int)}.
+	 */
+	@Test
+	public void cannot_add_treasures_on_a_mountain() {
+		Tile tile = new Tile();
+		tile.setType(TileType.MOUNTAIN);
+
+		tile.setTreasures(7);
+
+		assertEquals(0, tile.getTreasures());
 	}
 }
