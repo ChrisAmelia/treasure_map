@@ -2,6 +2,7 @@ package com.treasuremap.app.controller;
 
 import java.util.List;
 import com.treasuremap.app.model.Adventurer;
+import com.treasuremap.app.model.GameThread;
 import com.treasuremap.app.model.Orientation;
 import com.treasuremap.app.model.Tile;
 import com.treasuremap.app.model.TreasureMap;
@@ -28,14 +29,24 @@ public class Game {
 	 */
 	@Getter @Setter private TreasureMap map;
 
-	public void play() {
-		for (Adventurer adventurer : adventurers) {
-			(new Thread() {
-				@Override
-				public void run() {
+	/**
+	 * The threads.
+	 *
+	 * @return the threads.
+	 */
+	@Getter private Thread[] gameThreads;
 
-				}
-			}).start();
+	/**
+	 * Starts the threads.
+	 */
+	public void play() {
+		gameThreads = new Thread[adventurers.size()];
+
+		for (int i = 0 ; i < gameThreads.length ; i++) {
+			GameThread thread = new GameThread(this, adventurers.get(i));
+
+			gameThreads[i] = new Thread(thread);
+			gameThreads[i].run();
 		}
 	}
 
