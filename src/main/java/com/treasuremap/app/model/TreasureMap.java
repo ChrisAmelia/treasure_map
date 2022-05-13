@@ -26,8 +26,8 @@ public class TreasureMap {
 	public TreasureMap(int width, int height) {
 		tiles = new Tile[height][width];
 
-		for (int j = 0 ; j < width ; j++) {
-			for (int i = 0 ; i < height ; i++) {
+		for (int i = 0 ; i < tiles.length ; i++) {
+			for (int j = 0 ; j < tiles[i].length ; j++) {
 				tiles[i][j] = new Tile(i, j);
 			}
 		}
