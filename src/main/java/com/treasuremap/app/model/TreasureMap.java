@@ -192,25 +192,86 @@ public class TreasureMap {
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 
-		builder.append("   ");
+		int width = getWidth();
+		int spaces = 3;
 
-		for (int j = 0 ; j < tiles[0].length ; j++) {
-			builder.append((j + 1) + " ");
+		// First row index: initial indent
+		for (int i = 0 ; i <= spaces ; i++) {
+			builder.append(" ");
+		}
+
+		// First row index: column index
+		for (int i = 0 ; i < width; i++) {
+			for (int k = 0 ; k < spaces;  k++) {
+				if (k == (spaces / 2)) {
+					builder.append(i + 1);
+				} else {
+					builder.append(" ");
+				}
+			}
+
+			builder.append(" ");
 		}
 
 		builder.append("\n");
 
+		addSeparator(builder, spaces, width);
+
 		for (int i = 0 ; i < tiles.length ; i++) {
-			builder.append((i + 1) + " ");
+			// Row index
+			for (int k = 0; k < spaces; k++) {
+				if (k == spaces / 2) {
+					builder.append(i + 1);
+				} else {
+					builder.append(" ");
+				}
+			}
+
 			for (int j = 0 ; j < tiles[i].length ; j++) {
-				builder.append("|" + tiles[i][j].toString());
+				builder.append("|");
+
+				for (int k = 0 ; k < spaces ; k++) {
+					if (k == (spaces / 2)) {
+						builder.append(tiles[i][j].toString());
+					} else {
+						builder.append(" ");
+					}
+				}
 			}
 
 			builder.append("|");
 			builder.append("\n");
+			addSeparator(builder, spaces, width);
 		}
-
 
 		return builder.toString();
 	}
+
+	/**
+	 * Adds ASCII separator line.
+	 *
+	 * @param builder The buffer.
+	 * @param spaces  The indent.
+	 * @param width   The matrix's width.
+	 */
+	private static void addSeparator(StringBuilder builder, int spaces, int width) {
+		for (int k = 0 ; k < spaces ; k++) {
+			builder.append(" ");
+		}
+
+		for (int i = 0 ; i < width ; i++) {
+			builder.append("+");
+
+			for (int k = 0 ; k < spaces ; k++) {
+				builder.append("-");
+			}
+
+			if (i == width - 1) {
+				builder.append("+");
+			}
+		}
+
+		builder.append("\n");
+	}
+
 }
