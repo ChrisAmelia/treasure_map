@@ -1,6 +1,8 @@
 package com.treasuremap.app.controller;
 
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -17,6 +19,16 @@ import lombok.Setter;
  * Game
  */
 public class Game {
+	/**
+	 * Duration of the game in seconds.
+	 */
+	private int duration = 0;
+
+	/**
+	 * Timer to measures elapsed time.
+	 */
+	private Timer timer = new Timer();
+
 	/**
 	 * The adventurer presents on the map.
 	 *
@@ -44,6 +56,7 @@ public class Game {
 	 * Starts the threads.
 	 */
 	public void play() {
+		initTimer();
 		gameThreads = new Thread[adventurers.size()];
 
 		for (int i = 0 ; i < gameThreads.length ; i++) {
@@ -52,6 +65,19 @@ public class Game {
 			gameThreads[i] = new Thread(runnable);
 			gameThreads[i].run();
 		}
+	}
+
+	private void initTimer() {
+		timer.scheduleAtFixedRate(new TimerTask() {
+			@Override
+			public void run() {
+				duration++;
+
+				if (hasFinished()) {
+					timer.cancel();
+				}
+			}
+		}, 0, 1000);
 	}
 
 	/**
@@ -120,6 +146,11 @@ public class Game {
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 
+		builder.append("Duration: " + duration + "s");
+		builder.append("\n");
+		builder.append("Game: " + (hasFinished() ? "finished" : "ongoing"));
+		builder.append("\n");
+		builder.append("\n");
 		builder.append(map.toString());
 		builder.append("\n\n");
 		builder.append(adventurersInfo());
@@ -128,12 +159,6 @@ public class Game {
 		builder.append("\n");
 		builder.append(treasuresInfo());
 		builder.append("\n");
-
-		if (hasFinished()) {
-			builder.append("   Game: finished");
-		} else {
-			builder.append("   Game: ongoing");
-		}
 
 		return builder.toString();
 	}
