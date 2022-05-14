@@ -1,6 +1,7 @@
 package com.treasuremap.app.model;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 /**
@@ -146,4 +147,31 @@ public class AdventurerTest {
 		assertEquals(Orientation.NORTH, adventurer.getOrientation());
 	}
 	
+	/**
+	 * See definition in link below.
+	 *
+	 * Testing method {@link Adventurer#hasCompletedPath()}.
+	 */
+	@Test
+	public void when_pointer_is_greater_or_equal_than_the_length_of_the_path_then_adventurer_has_completed_their_path() {
+		Adventurer adventurer = new Adventurer();
+		adventurer.setPath("AADADAGA");
+		adventurer.setPointer(adventurer.getPath().length());
+
+		assertTrue(adventurer.hasCompletedPath());
+	}
+
+	/**
+	 * See definition in link below.
+	 *
+	 * Testing method {@link Adventurer#hasCompletedPath()}.
+	 */
+	@Test
+	public void when_pointer_is_less_than_path_length_then_adventurer_has_not_completed_their_path() {
+		Adventurer adventurer = new Adventurer();
+		adventurer.setPath("AADADAGA");
+		adventurer.setPointer(adventurer.getPath().length() - 1);
+
+		assertFalse(adventurer.hasCompletedPath());;
+	}
 }

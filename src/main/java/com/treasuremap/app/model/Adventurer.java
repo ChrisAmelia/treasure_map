@@ -157,6 +157,17 @@ public class Adventurer {
 		return newOrientation;
 	}
 
+	/**
+	 * Returns true if adventurer has completed their path, else false.
+	 * An adventurer is said to have completed their path if the pointer is greater or equal
+	 * than the path's length.
+	 *
+	 * @return true if adventurer has completed their path, else false.
+	 */
+	public boolean hasCompletedPath() {
+		return pointer >= path.length();
+	}
+
 	@Override
 	public String toString() {
 		return name.substring(0, 1);
