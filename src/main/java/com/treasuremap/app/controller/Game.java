@@ -127,6 +127,13 @@ public class Game {
 		builder.append(mountainsInfo());
 		builder.append("\n");
 		builder.append(treasuresInfo());
+		builder.append("\n");
+
+		if (hasFinished()) {
+			builder.append("   Game: finished");
+		} else {
+			builder.append("   Game: ongoing");
+		}
 
 		return builder.toString();
 	}

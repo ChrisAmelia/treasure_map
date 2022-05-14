@@ -68,6 +68,10 @@ public class App {
 			public void run() {
 				clearScreen();
 				System.out.println(game.toString());
+
+				if (game.hasFinished()) {
+					timer.cancel();
+				}
 			}
 		}, 0, 1000);
 	}
