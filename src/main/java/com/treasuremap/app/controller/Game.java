@@ -208,14 +208,51 @@ public class Game {
 		}
 
 		for (Adventurer adventurer : adventurers) {
-			builder.append(adventurer.getName());
-			builder.append(": ");
-			builder.append("(" + (adventurer.getX() + 1) + "," + (adventurer.getY() + 1) + "), ");
-			builder.append("treasures=" + adventurer.getTreasures() + ", ");
-			builder.append("path=" + adventurer.getPath()+ ", ");
-			builder.append("orientation=" + adventurer.getOrientation().name());
+			builder.append(builderAdventurerInfo(adventurer));
 			builder.append("\n");
 		}
+
+		return builder.toString();
+	}
+
+	/**
+	 * Returns one line describing the adventurer's current state.
+	 *
+	 * @param adventurer The adventurer to describe.
+	 * @return string containing the state of the adventurer.
+	 */
+	private String builderAdventurerInfo(Adventurer adventurer) {
+		StringBuilder builder = new StringBuilder();
+
+		int spaces = 0;
+
+		// John: (2,1), treasures=0, path=AADADAGA, orientation=EAST
+		spaces += adventurer.getName().length();
+		spaces += 3; // to reach the first parenthesis
+		spaces += String.valueOf( adventurer.getX() ).length();
+		spaces += 1; // comma between the coordinates
+		spaces += String.valueOf( adventurer.getY() ).length();
+		spaces += 3; // closing parenthesis, comma then space
+		spaces += "treasures".length();
+		spaces += 1; // equal sign
+		spaces += String.valueOf( adventurer.getTreasures() ).length();
+		spaces += 2; // comma then space
+		spaces += "path".length();
+		spaces += adventurer.getPointer();
+
+		for (int i = 0 ; i < spaces ; i++) {
+			builder.append(" ");
+		}
+
+		builder.append("↓");
+
+		builder.append("\n");
+		builder.append(adventurer.getName());
+		builder.append(": ");
+		builder.append("(" + (adventurer.getX() + 1) + "," + (adventurer.getY() + 1) + "), ");
+		builder.append("treasures=" + adventurer.getTreasures() + ", ");
+		builder.append("path=" + adventurer.getPath()+ ", ");
+		builder.append("orientation=" + adventurer.getOrientation().name());
 
 		return builder.toString();
 	}
