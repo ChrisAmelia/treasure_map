@@ -67,6 +67,9 @@ public class Game {
 		}
 	}
 
+	/**
+	 * Initializes the timer to measure the duration of the game.
+	 */
 	private void initTimer() {
 		timer.scheduleAtFixedRate(new TimerTask() {
 			@Override
