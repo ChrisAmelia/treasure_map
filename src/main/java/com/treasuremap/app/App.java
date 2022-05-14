@@ -17,11 +17,14 @@ import com.treasuremap.app.model.TreasureMap;
  */
 public class App {
 
-	public static void clearScreen() {
-		System.out.println("\033[H\033[2J");
+    public static void main(String[] args) {
+		playDemo();
 	}
 
-    public static void main(String[] args) {
+	/**
+	 * Play an example of game.
+	 */
+	private static void playDemo() {
 		Adventurer adventurer = new Adventurer();
 		adventurer.setName("John");
 		adventurer.setOrientation(Orientation.EAST);
@@ -39,41 +42,7 @@ public class App {
 		System.out.println(game.toString());
 
 		game.play();
-
-		Thread[] threads = game.getGameThreads();
-
-		try {
-			for (int i = 0 ; i < threads.length ;i++) {
-				threads[i].join();
-			}
-		}  catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-
-		Timer timer = new Timer();
-		int ms = 250;
-		printGame(timer, game, ms);
-	}
-
-	/**
-	 * Prints the game's state for given duration in milliseconds.
-	 *
-	 * @param timer Timer.
-	 * @param game  Game.
-	 * @param ms    Milliseconds.
-	 */
-	public static void printGame(Timer timer, Game game, int ms) {
-		timer.scheduleAtFixedRate(new TimerTask() {
-			@Override
-			public void run() {
-				clearScreen();
-				System.out.println(game.toString());
-
-				if (game.hasFinished()) {
-					timer.cancel();
-				}
-			}
-		}, 0, 1000);
+		game.print();
 	}
 
 }

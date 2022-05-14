@@ -27,7 +27,7 @@ public class Game {
 	/**
 	 * Timer to measures elapsed time.
 	 */
-	private Timer timer = new Timer();
+	private Timer durationTimer = new Timer();
 
 	/**
 	 * The adventurer presents on the map.
@@ -59,11 +59,18 @@ public class Game {
 		initTimer();
 		gameThreads = new Thread[adventurers.size()];
 
-		for (int i = 0 ; i < gameThreads.length ; i++) {
-			GameRunnable runnable = new GameRunnable(this, adventurers.get(i));
+		for (int i = 0 ; i < gameThreads.length ; i++) { GameRunnable runnable = new GameRunnable(this, adventurers.get(i));
 
 			gameThreads[i] = new Thread(runnable);
 			gameThreads[i].run();
+		}
+
+		try {
+			for (int i = 0 ; i < gameThreads.length ;i++) {
+				gameThreads[i].join();
+			}
+		}  catch (InterruptedException e) {
+			e.printStackTrace();
 		}
 	}
 
@@ -71,13 +78,13 @@ public class Game {
 	 * Initializes the timer to measure the duration of the game.
 	 */
 	private void initTimer() {
-		timer.scheduleAtFixedRate(new TimerTask() {
+		durationTimer.scheduleAtFixedRate(new TimerTask() {
 			@Override
 			public void run() {
 				duration++;
 
 				if (hasFinished()) {
-					timer.cancel();
+					durationTimer.cancel();
 				}
 			}
 		}, 0, 1000);
@@ -143,6 +150,26 @@ public class Game {
 		}
 
 		return true;
+	}
+
+	/**
+	 * Prints to standard output the state of the game every second.
+	 */
+	public void print() {
+		Timer timer = new Timer();
+		Game game = this;
+
+		timer.scheduleAtFixedRate(new TimerTask() {
+			@Override
+			public void run() {
+				System.out.println("\033[H\033[2J"); // Clear screen
+				System.out.println(game.toString());
+
+				if (game.hasFinished()) {
+					timer.cancel();
+				}
+			}
+		}, 0, 1000);
 	}
 
 	@Override
