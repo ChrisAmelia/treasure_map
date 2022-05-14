@@ -99,6 +99,23 @@ public class Game {
 		}
 	}
 
+	/**
+	 * Returns true if the game has finished, else false.
+	 * A game is said to have finished if every adventurer has executed every step of their path,
+	 * i.e. the pointer >= path's length.
+	 *
+	 * @return true if the game has finished, else false.
+	 */
+	public boolean hasFinished() {
+		for (Adventurer adventurer : adventurers) {
+			if (!adventurer.hasCompletedPath()) {
+				return false;
+			}
+		}
+
+		return true;
+	}
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
