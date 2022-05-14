@@ -51,11 +51,12 @@ public class App {
 		}
 
 		Timer timer = new Timer();
-		printGame(timer, game, 1000);
+		int ms = 250;
+		printGame(timer, game, ms);
 	}
 
 	/**
-	 * Prints the game's state for the given milliseconds.
+	 * Prints the game's state for given duration in milliseconds.
 	 *
 	 * @param timer Timer.
 	 * @param game  Game.
