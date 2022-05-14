@@ -26,8 +26,6 @@ public class GameRunnable implements Runnable {
 		timer.scheduleAtFixedRate(new TimerTask() {
 			@Override
 			public void run() {
-				App.clearScreen();
-				System.out.println(game.toString());
 				game.executeAdventurerPath(adventurer);
 
 				if (adventurer.getPointer() >= adventurer.getPath().length()) {

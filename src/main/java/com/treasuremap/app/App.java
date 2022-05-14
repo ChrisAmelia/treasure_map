@@ -1,5 +1,7 @@
 package com.treasuremap.app;
 
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import com.treasuremap.app.controller.Game;
@@ -47,6 +49,26 @@ public class App {
 		}  catch (InterruptedException e) {
 			e.printStackTrace();
 		}
+
+		Timer timer = new Timer();
+		printGame(timer, game, 1000);
+	}
+
+	/**
+	 * Prints the game's state for the given milliseconds.
+	 *
+	 * @param timer Timer.
+	 * @param game  Game.
+	 * @param ms    Milliseconds.
+	 */
+	public static void printGame(Timer timer, Game game, int ms) {
+		timer.scheduleAtFixedRate(new TimerTask() {
+			@Override
+			public void run() {
+				clearScreen();
+				System.out.println(game.toString());
+			}
+		}, 0, 1000);
 	}
 
 }
