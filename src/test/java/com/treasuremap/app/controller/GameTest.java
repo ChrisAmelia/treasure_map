@@ -15,17 +15,19 @@ public class GameTest {
 
 	/**
 	 * The initial position of the adventurer is (0,0).
-	 * Given the path "AADADAGA" and facing direction EAST, the adventurer should arrive on (2,1).
+	 * Given the path "AADADAGA" and facing direction EAST, the adventurer should arrive on (2,3).
+	 * Be mindful of indexes.
 	 *
-	 * +---+---+---+
-	 * | → | → | ↓ |
-	 * +---+---+---+
-	 * |   | ↓ | ← |
-	 * +---+---+---+
-	 * |   | ↓ |   |
-	 * +---+---+---+
+	 *     1   2   3
+	 *   +---+---+---+
+	 * 1 | → | → | ↓ |
+	 *   +---+---+---+
+	 * 2 |   | ↓ | ← |
+	 *   +---+---+---+
+	 * 3 |   | ↓ |   |
+	 *   +---+---+---+
 	 *
-	 * Testing method {@link Game#executeAdventurerPath(Adventurer)}. // TODO signature will change
+	 * Testing method {@link Game#executeAdventurerPath(Adventurer)}.
 	 */
 	@Test
 	public void adventurer_with_finite_path_should_have_a_deterministic_result() {
@@ -39,7 +41,10 @@ public class GameTest {
 		Game game = new Game();
 		game.setMap(map);
 		game.setAdventurers(Stream.of(adventurer).collect(Collectors.toList()));
-		game.executeAdventurerPath(adventurer);
+
+		for (char c : adventurer.getPath().toCharArray()) {
+			game.executeAdventurerPath(adventurer);
+		}
 
 		assertEquals(1, adventurer.getX());
 		assertEquals(2, adventurer.getY());

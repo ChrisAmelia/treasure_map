@@ -1,11 +1,15 @@
 package com.treasuremap.app.controller;
 
 import java.util.List;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+
 import com.treasuremap.app.model.Adventurer;
-import com.treasuremap.app.model.GameThread;
 import com.treasuremap.app.model.Orientation;
 import com.treasuremap.app.model.Tile;
 import com.treasuremap.app.model.TreasureMap;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -43,30 +47,55 @@ public class Game {
 		gameThreads = new Thread[adventurers.size()];
 
 		for (int i = 0 ; i < gameThreads.length ; i++) {
-			GameThread thread = new GameThread(this, adventurers.get(i));
+			GameRunnable runnable = new GameRunnable(this, adventurers.get(i));
 
-			gameThreads[i] = new Thread(thread);
+			gameThreads[i] = new Thread(runnable);
 			gameThreads[i].run();
 		}
 	}
 
 	/**
-	 * Moves given adventurer on the map depending on the path.
+	 * Executes given adventurer's step then increases their pointer by 1.
+	 * If the pointer is greater than the length of the path then does nothing.
+	 *
+	 * Here is an example: the adventurer 'A' is on first tile (0,0) and the path is 'AADADAGA'.
+	 * The pointer is initially 0, after adventurer moves, the pointer is 1.
+	 *
+	 *   ↓                                               ↓
+	 *   AADADAGA                                       AADADAGA
+	 *
+	 * +---+---+---+                                  +---+---+---+
+	 * | A |   |   |                                  | A |   |   |
+	 * +---+---+---+  first step 'A' (move forward)   +---+---+---+
+	 * |   |   |   |   -------------------------->    |   |   |   |
+	 * +---+---+---+                                  +---+---+---+
+	 * |   |   |   |                                  |   |   |   |
+	 * +---+---+---+                                  +---+---+---+
 	 *
 	 * @see Adventurer#getPath()
 	 * @param adventurer adventurer to move.
 	 */
 	public void executeAdventurerPath(Adventurer adventurer) {
-		for (char c : adventurer.getPath().toCharArray()) {
-			if (c == 'A') {
-				map.moveAdventurerForward(adventurer);
-			} else if (c == 'D') {
-				adventurer.rotateRight();
-			} else if (c == 'G') {
-				adventurer.rotateLeft();
-			} else {
-				System.err.println("Error, symbol '" + c + "' unknown.");
-			}
+		String path = adventurer.getPath();
+		int pointer = adventurer.getPointer();
+
+		if (pointer >= path.length()) {
+			return;
+		}
+
+		char c = path.charAt(pointer);
+
+		if (c == 'A') {
+			map.moveAdventurerForward(adventurer);
+			adventurer.setPointer(pointer + 1);
+		} else if (c == 'D') {
+			adventurer.rotateRight();
+			adventurer.setPointer(pointer + 1);
+		} else if (c == 'G') {
+			adventurer.rotateLeft();
+			adventurer.setPointer(pointer + 1);
+		} else {
+			System.err.println("Error, symbol '" + c + "' unknown.");
 		}
 	}
 

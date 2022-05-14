@@ -36,7 +36,7 @@ public class Adventurer {
 	 * - 'D', turn to the right;
 	 * - 'G', turn to the left.
 	 *
-	 * Here's an example with 'AADAGA', the initial position being (0,0) (top left corner):
+	 * Here's an example with 'AADADAGA', the initial position being (0,0) (top left corner):
 	 *
 	 * +---+---+---+
 	 * | → | → | ↓ |
@@ -66,6 +66,18 @@ public class Adventurer {
 	 * @return the ordinate.
 	 */
 	private int y;
+
+	/**
+	 * Indicates which step of the path is to be executed.
+	 * Given the path 'AADADAGA', if pointer is 2 then the adventurer is to turn to the right.
+	 *
+	 *   ↓
+	 * AADADAGA, action is turning to the right.
+	 *  
+	 * @param pointer the index of the step.
+	 * @return the step of the path.
+	 */
+	private int pointer;
 
 	/**
 	 * Sets the treasures.
