@@ -59,8 +59,8 @@ public class Game {
 		initTimer();
 		gameThreads = new Thread[adventurers.size()];
 
-		for (int i = 0 ; i < gameThreads.length ; i++) { GameRunnable runnable = new GameRunnable(this, adventurers.get(i));
-
+		for (int i = 0 ; i < gameThreads.length ; i++) {
+			GameRunnable runnable = new GameRunnable(this, adventurers.get(i));
 			gameThreads[i] = new Thread(runnable);
 			gameThreads[i].run();
 		}
