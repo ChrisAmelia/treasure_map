@@ -91,19 +91,19 @@ public class Game {
 	}
 
 	/**
-	 * Executes given adventurer's step then increases their pointer by 1.
-	 * If the pointer is greater than the length of the path then does nothing.
+	 * Executes given adventurer's current step then increases their pointer by 1.
+	 * If the pointer is greater than the path's length then does nothing.
 	 *
-	 * Here is an example: the adventurer 'A' is on first tile (0,0) and the path is 'AADADAGA'.
-	 * The pointer is initially 0, after adventurer moves, the pointer is 1.
+	 * Here is an example: the adventurer 'A' is on first tile (0,0) and the path is 'AADADAGA' facing south.
+	 * The pointer is initially 0, after adventurer moves, the pointer is then 1.
 	 *
 	 *   ↓                                               ↓
 	 *   AADADAGA                                       AADADAGA
 	 *
 	 * +---+---+---+                                  +---+---+---+
-	 * | A |   |   |                                  | A |   |   |
+	 * | A |   |   |                                  |   |   |   |
 	 * +---+---+---+  first step 'A' (move forward)   +---+---+---+
-	 * |   |   |   |   -------------------------->    |   |   |   |
+	 * |   |   |   |   -------------------------->    | A |   |   |
 	 * +---+---+---+                                  +---+---+---+
 	 * |   |   |   |                                  |   |   |   |
 	 * +---+---+---+                                  +---+---+---+
