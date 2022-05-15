@@ -172,6 +172,7 @@ public class Game {
 
 					try {
 						GameUtils.writeGameStateToFile(game);
+						System.out.println("Result written to file 'result.txt'");
 					} catch (IOException e) {
 						e.printStackTrace();
 					}
