@@ -1,5 +1,6 @@
 package com.treasuremap.app.controller;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -8,6 +9,7 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 import com.treasuremap.app.model.Adventurer;
+import com.treasuremap.app.model.GameUtils;
 import com.treasuremap.app.model.Orientation;
 import com.treasuremap.app.model.Tile;
 import com.treasuremap.app.model.TreasureMap;
@@ -167,6 +169,12 @@ public class Game {
 
 				if (game.hasFinished()) {
 					timer.cancel();
+
+					try {
+						GameUtils.writeGameStateToFile(game);
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
 				}
 			}
 		}, 0, 1000);
