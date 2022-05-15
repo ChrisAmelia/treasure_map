@@ -65,11 +65,6 @@ public class TreasureMap {
 		Tile tile = getTiles()[ordinate][abscissa];
 
 		if (tile.hasTreasures()) {
-			try {
-				Thread.sleep(1000);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
 			adventurer.gainTreasures(tile);
 		}
 

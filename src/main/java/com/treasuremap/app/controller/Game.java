@@ -155,7 +155,7 @@ public class Game {
 	}
 
 	/**
-	 * Prints to standard output the state of the game every 500ms.
+	 * Prints to standard output the state of the game every second.
 	 */
 	public void print() {
 		Timer timer = new Timer();
@@ -178,7 +178,7 @@ public class Game {
 					}
 				}
 			}
-		}, 0, 500);
+		}, 0, 1000);
 	}
 
 	@Override
