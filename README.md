@@ -104,6 +104,14 @@ John 1-1 E AADAGAGA
 1. Maven is required in order to build this project, refer to the [installation page](https://maven.apache.org/install.html).
 1. Java 11.
 
+### Testing
+
+Run:
+
+```
+mvn test
+```
+
 ### Installation
 
 Run:
