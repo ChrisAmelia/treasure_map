@@ -292,18 +292,19 @@ public class TreasureMapTest {
 	/**
 	 * Adventurers cannot moves past the map's bounds, they stay on site if they attempt to do so.
 	 * In the example below,
-	 * - A(0, 1) is facing north and is attempting to move up, 
-	 * - B(1, 0) is facing west and is attempting to move left,
-	 * - C(2, 1) is facing south and is attempting to move down,
-	 * - D(1, 2) is facing east and is attempting to move right.
+	 * - A(2, 1) is facing north and is attempting to move up, 
+	 * - B(1, 2) is facing west and is attempting to move left,
+	 * - C(2, 3) is facing south and is attempting to move down,
+	 * - D(3, 2) is facing east and is attempting to move right.
 	 *
-	 * +---+---+---+       +---+---+---+
-	 * |   | A |   |       |   | A |   |
-	 * +---+---+---+       +---+---+---+
-	 * | B |   | D | moves | B |   | D |
-	 * +---+---+---+       +---+---+---+
-	 * |   | C |   |       |   | C |   |
-	 * +---+---+---+       +---+---+---+
+	 *     1     2   3              1   2   3
+	 *   +----+----+----+         +---+---+---+
+	 * 1 |    | A↑ |    |       1 |   | A |   |
+	 *   +----+----+----+         +---+---+---+
+	 * 2 | ←B |    | D→ | moves 2 | B |   | D |
+	 *   +----+----+----+         +---+---+---+
+	 * 3 |    | C↓ |    |       2 |   | C |   |
+	 *   +----+----+----+         +---+---+---+
 	 *
 	 * Testing method {@link TreasureMap#moveAdventurerForward(Adventurer)}.
 	 */
@@ -314,26 +315,26 @@ public class TreasureMapTest {
 		Adventurer adventurerA = new Adventurer();
 		adventurerA.setName("A");
 		adventurerA.setOrientation(Orientation.NORTH);
-		int xA = 0;
-		int yA = 1;
+		int xA = 1;
+		int yA = 0;
 
 		Adventurer adventurerB = new Adventurer();
 		adventurerB.setName("B");
 		adventurerB.setOrientation(Orientation.WEST);
-		int xB = 1;
-		int yB = 0;
+		int xB = 0;
+		int yB = 1;
 
 		Adventurer adventurerC = new Adventurer();
 		adventurerC.setName("C");
 		adventurerC.setOrientation(Orientation.SOUTH);
-		int xC = 2;
-		int yC = 1;
+		int xC = 1;
+		int yC = 2;
 
 		Adventurer adventurerD = new Adventurer();
 		adventurerD.setName("D");
 		adventurerD.setOrientation(Orientation.EAST);
-		int xD = 1;
-		int yD = 2;
+		int xD = 2;
+		int yD = 1;
 
 		map.addAdventurer(adventurerA, xA, yA);
 		map.addAdventurer(adventurerB, xB, yB);
@@ -360,7 +361,7 @@ public class TreasureMapTest {
 	 * +---+---+---+       +---+---+---+
 	 * |   |   |   |       |   |   |   |
 	 * +---+---+---+       +---+---+---+
-	 * |   | A | * | moves |   | A | * |
+	 * |   | → | x | moves |   | A | x |
 	 * +---+---+---+       +---+---+---+
 	 * |   |   |   |       |   |   |   |
 	 * +---+---+---+       +---+---+---+
